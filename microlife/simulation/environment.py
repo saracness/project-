@@ -1,9 +1,63 @@
 """
-Environment class for Phase 1
-Manages the simulation world and organisms
+Enhanced Environment class for Phase 2
+Manages the simulation world with temperature zones and obstacles
 """
 import random
+import math
 from .organism import Organism, Food
+
+
+class TemperatureZone:
+    """
+    Temperature zone that affects organism energy (Phase 2).
+    """
+    def __init__(self, x, y, radius, temperature):
+        """
+        Args:
+            x, y: Center position
+            radius: Zone radius
+            temperature: Hot (positive) or cold (negative)
+        """
+        self.x = x
+        self.y = y
+        self.radius = radius
+        self.temperature = temperature  # +1 = hot, -1 = cold
+
+    def affects(self, organism):
+        """Check if organism is in this zone."""
+        dx = organism.x - self.x
+        dy = organism.y - self.y
+        distance = math.sqrt(dx**2 + dy**2)
+        return distance <= self.radius
+
+    def get_energy_effect(self):
+        """Energy drain/gain from being in this zone."""
+        return -0.05 * abs(self.temperature)  # Hot/cold zones drain energy
+
+
+class Obstacle:
+    """
+    Obstacle/wall that blocks organism movement (Phase 2).
+    """
+    def __init__(self, x, y, width, height):
+        """
+        Args:
+            x, y: Top-left corner
+            width, height: Obstacle dimensions
+        """
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def collides_with(self, organism):
+        """Check if organism collides with this obstacle."""
+        return (self.x <= organism.x <= self.x + self.width and
+                self.y <= organism.y <= self.y + self.height)
+
+    def get_bounds(self):
+        """Get obstacle boundaries."""
+        return (self.x, self.y, self.x + self.width, self.y + self.height)
 
 
 class Environment:
@@ -15,23 +69,30 @@ class Environment:
         height (float): Environment height
         organisms (list): List of Organism instances
         food_particles (list): List of Food instances
+        temperature_zones (list): List of TemperatureZone instances
+        obstacles (list): List of Obstacle instances
         timestep (int): Current simulation timestep
+        use_intelligent_movement (bool): Use Phase 2 intelligent behavior
     """
 
-    def __init__(self, width=500, height=500):
+    def __init__(self, width=500, height=500, use_intelligent_movement=True):
         """
         Initialize the environment.
 
         Args:
             width (float): Environment width
             height (float): Environment height
+            use_intelligent_movement (bool): Enable Phase 2 behaviors
         """
         self.width = width
         self.height = height
         self.organisms = []
         self.food_particles = []
+        self.temperature_zones = []
+        self.obstacles = []
         self.timestep = 0
         self.history = []
+        self.use_intelligent_movement = use_intelligent_movement
 
     def add_organism(self, organism=None, x=None, y=None):
         """
@@ -76,6 +137,35 @@ class Environment:
         for _ in range(count):
             self.add_food()
 
+    def add_temperature_zone(self, x=None, y=None, radius=50, temperature=1):
+        """
+        Add a temperature zone to the environment.
+
+        Args:
+            x, y: Center position (random if None)
+            radius: Zone radius
+            temperature: +1 for hot, -1 for cold
+        """
+        if x is None:
+            x = random.uniform(0, self.width)
+        if y is None:
+            y = random.uniform(0, self.height)
+        self.temperature_zones.append(TemperatureZone(x, y, radius, temperature))
+
+    def add_obstacle(self, x=None, y=None, width=50, height=50):
+        """
+        Add an obstacle to the environment.
+
+        Args:
+            x, y: Top-left corner (random if None)
+            width, height: Obstacle dimensions
+        """
+        if x is None:
+            x = random.uniform(0, self.width - width)
+        if y is None:
+            y = random.uniform(0, self.height - height)
+        self.obstacles.append(Obstacle(x, y, width, height))
+
     def update(self):
         """
         Update simulation by one timestep.
@@ -87,7 +177,17 @@ class Environment:
         # Move all organisms
         for organism in self.organisms:
             if organism.alive:
-                organism.move_random(bounds)
+                # Phase 2: Use intelligent movement if enabled
+                if self.use_intelligent_movement:
+                    organism.move_intelligent(self.food_particles, bounds, self.obstacles)
+                else:
+                    organism.move_random(bounds)
+
+                # Check for obstacle collision
+                self._handle_obstacle_collision(organism)
+
+                # Apply temperature zone effects
+                self._apply_temperature_effects(organism)
 
                 # Check for food consumption
                 self._check_food_consumption(organism)
@@ -108,6 +208,34 @@ class Environment:
         # Spawn new food periodically
         if self.timestep % 20 == 0:
             self.spawn_food(count=2)
+
+    def _handle_obstacle_collision(self, organism):
+        """
+        Handle organism collision with obstacles.
+
+        Args:
+            organism (Organism): The organism to check
+        """
+        for obstacle in self.obstacles:
+            if obstacle.collides_with(organism):
+                # Push organism out of obstacle
+                x1, y1, x2, y2 = obstacle.get_bounds()
+                # Simple collision response: move to nearest edge
+                if len(organism.trail) > 1:
+                    prev_x, prev_y = organism.trail[-2]
+                    organism.x = prev_x
+                    organism.y = prev_y
+
+    def _apply_temperature_effects(self, organism):
+        """
+        Apply temperature zone effects to organism.
+
+        Args:
+            organism (Organism): The organism to affect
+        """
+        for zone in self.temperature_zones:
+            if zone.affects(organism):
+                organism.energy += zone.get_energy_effect()
 
     def _check_food_consumption(self, organism):
         """
@@ -144,9 +272,14 @@ class Environment:
         if alive_organisms:
             avg_energy = sum(o.energy for o in alive_organisms) / len(alive_organisms)
             avg_age = sum(o.age for o in alive_organisms) / len(alive_organisms)
+            # Count behaviors
+            seeking_count = sum(1 for o in alive_organisms if o.behavior_mode == "seeking")
+            wandering_count = sum(1 for o in alive_organisms if o.behavior_mode == "wandering")
         else:
             avg_energy = 0
             avg_age = 0
+            seeking_count = 0
+            wandering_count = 0
 
         return {
             'timestep': self.timestep,
@@ -154,13 +287,19 @@ class Environment:
             'total_organisms': len(self.organisms),
             'food_count': len([f for f in self.food_particles if not f.consumed]),
             'avg_energy': avg_energy,
-            'avg_age': avg_age
+            'avg_age': avg_age,
+            'seeking_count': seeking_count,
+            'wandering_count': wandering_count,
+            'temperature_zones': len(self.temperature_zones),
+            'obstacles': len(self.obstacles)
         }
 
     def reset(self):
         """Reset the environment to initial state."""
         self.organisms = []
         self.food_particles = []
+        self.temperature_zones = []
+        self.obstacles = []
         self.timestep = 0
         self.history = []
 

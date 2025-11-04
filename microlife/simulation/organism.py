@@ -1,9 +1,9 @@
 """
-Basic Organism class for Phase 1
-Simple organism with random movement
+Enhanced Organism class for Phase 2
+Organisms with intelligent food-seeking behavior
 """
 import random
-import numpy as np
+import math
 
 
 class Organism:
@@ -42,6 +42,11 @@ class Organism:
         self.trail = [(x, y)]
         self.max_trail_length = 50
 
+        # Phase 2: Behavior attributes
+        self.hunger_threshold = 100.0  # Seek food when energy below this
+        self.perception_radius = 100.0  # How far organism can "see"
+        self.behavior_mode = "seeking"  # seeking, fleeing, wandering
+
     def move_random(self, bounds=None):
         """
         Move in a random direction.
@@ -65,6 +70,107 @@ class Organism:
             self.x = max(0, min(width, self.x))
             self.y = max(0, min(height, self.y))
 
+        self._update_after_movement()
+
+    def move_towards(self, target_x, target_y, bounds=None):
+        """
+        Move towards a target position (Phase 2: Food seeking).
+
+        Args:
+            target_x (float): Target X position
+            target_y (float): Target Y position
+            bounds (tuple): (width, height) to constrain movement
+        """
+        if not self.alive:
+            return
+
+        # Calculate direction to target
+        dx = target_x - self.x
+        dy = target_y - self.y
+        distance = math.sqrt(dx**2 + dy**2)
+
+        if distance > 0:
+            # Normalize and scale by speed
+            dx = (dx / distance) * self.speed
+            dy = (dy / distance) * self.speed
+
+            self.x += dx
+            self.y += dy
+
+        # Apply boundaries
+        if bounds:
+            width, height = bounds
+            self.x = max(0, min(width, self.x))
+            self.y = max(0, min(height, self.y))
+
+        self._update_after_movement()
+
+    def move_intelligent(self, food_list, bounds=None, obstacles=None):
+        """
+        Move intelligently based on environment (Phase 2).
+        Seeks food when hungry, otherwise wanders.
+
+        Args:
+            food_list (list): List of Food objects
+            bounds (tuple): (width, height) to constrain movement
+            obstacles (list): List of obstacle objects
+        """
+        if not self.alive:
+            return
+
+        # Check if hungry and food is available
+        if self.energy < self.hunger_threshold and food_list:
+            nearest_food = self._find_nearest_food(food_list)
+            if nearest_food:
+                # Calculate distance to nearest food
+                dx = nearest_food.x - self.x
+                dy = nearest_food.y - self.y
+                distance = math.sqrt(dx**2 + dy**2)
+
+                # Only seek if within perception radius
+                if distance <= self.perception_radius:
+                    self.behavior_mode = "seeking"
+                    self.move_towards(nearest_food.x, nearest_food.y, bounds)
+                    return
+
+        # Otherwise, wander randomly
+        self.behavior_mode = "wandering"
+        self.move_random(bounds)
+
+    def _find_nearest_food(self, food_list):
+        """
+        Find the nearest food particle.
+
+        Args:
+            food_list (list): List of Food objects
+
+        Returns:
+            Food: Nearest food object or None
+        """
+        if not food_list:
+            return None
+
+        min_distance = float('inf')
+        nearest_food = None
+
+        for food in food_list:
+            if food.consumed:
+                continue
+
+            dx = food.x - self.x
+            dy = food.y - self.y
+            distance = math.sqrt(dx**2 + dy**2)
+
+            if distance < min_distance:
+                min_distance = distance
+                nearest_food = food
+
+        return nearest_food
+
+    def _update_after_movement(self):
+        """
+        Update organism state after movement.
+        """
         # Update trail
         self.trail.append((self.x, self.y))
         if len(self.trail) > self.max_trail_length:
@@ -139,7 +245,8 @@ class Organism:
             'speed': self.speed,
             'size': self.size,
             'alive': self.alive,
-            'age': self.age
+            'age': self.age,
+            'behavior_mode': self.behavior_mode
         }
 
     def __repr__(self):

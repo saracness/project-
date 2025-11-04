@@ -40,6 +40,21 @@ class SimpleRenderer:
         self.ax.clear()
         self.setup_plot()
 
+        # Draw temperature zones (Phase 2)
+        for zone in self.env.temperature_zones:
+            color = '#ff6b6b' if zone.temperature > 0 else '#4dabf7'  # Red = hot, Blue = cold
+            circle = Circle((zone.x, zone.y), zone.radius,
+                          color=color, alpha=0.15, linestyle='--', fill=True)
+            self.ax.add_patch(circle)
+
+        # Draw obstacles (Phase 2)
+        for obstacle in self.env.obstacles:
+            from matplotlib.patches import Rectangle
+            rect = Rectangle((obstacle.x, obstacle.y),
+                           obstacle.width, obstacle.height,
+                           color='#555555', alpha=0.7)
+            self.ax.add_patch(rect)
+
         # Draw food
         for food in self.env.food_particles:
             if not food.consumed:
@@ -69,12 +84,15 @@ class SimpleRenderer:
                                alpha=0.3,
                                linewidth=0.5)
 
-        # Add statistics text
+        # Add statistics text (Phase 2 enhanced)
         stats = self.env.get_statistics()
+        phase = "Phase 2" if self.env.use_intelligent_movement else "Phase 1"
         stats_text = (f"Timestep: {stats['timestep']}\n"
                      f"Population: {stats['population']}\n"
                      f"Food: {stats['food_count']}\n"
-                     f"Avg Energy: {stats['avg_energy']:.1f}")
+                     f"Avg Energy: {stats['avg_energy']:.1f}\n"
+                     f"Seeking: {stats.get('seeking_count', 0)}\n"
+                     f"Wandering: {stats.get('wandering_count', 0)}")
 
         self.ax.text(0.02, 0.98, stats_text,
                     transform=self.ax.transAxes,
@@ -85,7 +103,7 @@ class SimpleRenderer:
                             alpha=0.7),
                     color='white')
 
-        self.ax.set_title('Micro-Life Simulation (Phase 1)',
+        self.ax.set_title(f'Micro-Life Simulation ({phase})',
                          color='white',
                          fontsize=14,
                          pad=20)
