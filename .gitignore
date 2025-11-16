@@ -361,3 +361,30 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Python specific
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.venv/
+venv/
+ENV/
+env/
+
+# Output files from analysis
+output/
+*.tlog
+*.bin
+flight_*.png
+flight_*.html
+*_statistics.csv
+*_dashboard.*
+*_profile.*
+*_path.*
+*_attitude.*

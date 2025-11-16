@@ -1,0 +1,6 @@
+include README.md
+include LICENSE.txt
+include requirements.txt
+recursive-include pixhawk_flight_analyzer *.py
+recursive-include examples *.py
+recursive-include tests *.py
