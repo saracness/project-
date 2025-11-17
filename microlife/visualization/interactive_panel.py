@@ -130,8 +130,8 @@ class ControlPanel:
             y_pos = button_y - (i * button_spacing)
             ax = plt.axes([0.02, y_pos, 0.10, button_height])
             btn = Button(ax, f'+ {species}', color=color, hovercolor='lightgray')
-            btn.species_name = species
-            btn.on_clicked(self._spawn_species)
+            # Use closure to bind species name
+            btn.on_clicked(lambda event, sp=species: self._spawn_species_with_name(sp))
             self.species_buttons.append(btn)
 
         # Random species button
@@ -239,13 +239,10 @@ class ControlPanel:
 
         return None
 
-    def _spawn_species(self, event):
+    def _spawn_species_with_name(self, species_name):
         """Spawn a specific species with selected AI."""
         from ..simulation.morphology import get_species
         from ..simulation.organism import Organism
-
-        # Get species from button
-        species_name = event.inaxes._button.species_name
 
         # Create organism with this species morphology
         x = random.uniform(50, self.environment.width - 50)
@@ -255,28 +252,25 @@ class ControlPanel:
         organism = Organism(x, y, energy=120, morphology=morphology)
 
         print(f"\n{'='*50}")
-        print(f"SPAWN: {species_name}")
+        print(f"✨ SPAWN: {species_name}")
         print(f"Seçili AI: {self.selected_ai}")
 
         # Attach AI brain if selected
         if self.selected_ai != 'No AI':
             brain = self._create_brain(self.selected_ai)
-            print(f"Brain oluşturuldu: {brain is not None}")
             if brain:
                 organism.brain = brain
-                print(f"Brain attach edildi: {hasattr(organism, 'brain')}")
-                print(f"Brain tipi: {organism.brain.brain_type}")
-                print(f"✨ {species_name} + {self.selected_ai} BAŞARILI!")
+                print(f"✅ {species_name} + {self.selected_ai} EKLENDI!")
+                print(f"   Brain type: {organism.brain.brain_type}")
             else:
-                print(f"⚠️ Brain oluşturulamadı!")
+                print(f"⚠️ Brain oluşturulamadı - AI yok")
         else:
-            print(f"AI seçili değil - normal organizma")
+            print(f"✅ {species_name} eklendi (AI yok)")
 
         self.environment.add_organism(organism)
         total = len(self.environment.organisms)
         with_brain = sum(1 for o in self.environment.organisms if hasattr(o, 'brain') and o.brain)
-        print(f"Toplam organizma: {total}")
-        print(f"Brain'li: {with_brain}")
+        print(f"Toplam: {total} | Brain'li: {with_brain}")
         print(f"{'='*50}\n")
 
     def _spawn_random(self, event):
