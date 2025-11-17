@@ -109,78 +109,77 @@ class Morphology:
         }
 
 
-# Predefined species templates
 SPECIES_TEMPLATES = {
     'euglena': Morphology(
         species_name='Euglena',
-        flagella_length=0.9,  # Long tail for fast swimming
-        cilia_density=0.1,
-        body_size=0.5,
+        flagella_length=0.95,
+        cilia_density=0.05,
+        body_size=0.45,
         body_shape='oval',
-        color='#2ECC71'  # Green (has chloroplasts)
+        color='#2ECC71'
     ),
 
     'paramecium': Morphology(
         species_name='Paramecium',
-        flagella_length=0.0,  # No flagella
-        cilia_density=0.95,   # Covered in cilia
-        body_size=0.7,        # Relatively large
+        flagella_length=0.0,
+        cilia_density=0.98,
+        body_size=0.65,
         body_shape='oval',
-        color='#3498DB'  # Blue
+        color='#3498DB'
     ),
 
     'amoeba': Morphology(
         species_name='Amoeba',
         flagella_length=0.0,
-        cilia_density=0.0,    # No appendages
-        body_size=0.6,
+        cilia_density=0.0,
+        body_size=0.55,
         body_shape='round',
-        color='#E74C3C'  # Red
+        color='#E74C3C'
     ),
 
     'spirillum': Morphology(
         species_name='Spirillum',
-        flagella_length=0.7,  # Flagella at both ends
+        flagella_length=0.75,
         cilia_density=0.0,
-        body_size=0.3,        # Small bacteria
+        body_size=0.28,
         body_shape='rod',
-        color='#9B59B6'  # Purple
+        color='#9B59B6'
     ),
 
     'vorticella': Morphology(
         species_name='Vorticella',
-        flagella_length=0.2,  # Stalk (not for swimming)
-        cilia_density=0.8,    # Cilia around mouth
-        body_size=0.4,
+        flagella_length=0.15,
+        cilia_density=0.85,
+        body_size=0.38,
         body_shape='round',
-        color='#F39C12'  # Orange
+        color='#F39C12'
     ),
 
     'stentor': Morphology(
         species_name='Stentor',
         flagella_length=0.0,
-        cilia_density=0.9,
-        body_size=0.9,        # Very large
+        cilia_density=0.92,
+        body_size=0.85,
         body_shape='oval',
-        color='#1ABC9C'  # Teal
+        color='#1ABC9C'
     ),
 
     'chlamydomonas': Morphology(
         species_name='Chlamydomonas',
-        flagella_length=0.85,  # Two flagella
+        flagella_length=0.88,
         cilia_density=0.0,
-        body_size=0.35,        # Small
+        body_size=0.32,
         body_shape='round',
-        color='#27AE60'  # Dark green
+        color='#27AE60'
     ),
 
     'volvox': Morphology(
         species_name='Volvox',
-        flagella_length=0.6,   # Each cell has flagella
+        flagella_length=0.65,
         cilia_density=0.0,
-        body_size=0.8,         # Colonial, appears large
+        body_size=0.75,
         body_shape='round',
-        color='#16A085'  # Green-blue
+        color='#16A085'
     ),
 }
 

@@ -48,14 +48,15 @@ class ControlPanel:
     def _create_panel(self):
         """Create the control panel UI."""
         fig = self.renderer.fig
+        fig.subplots_adjust(left=0.15, right=0.85, top=0.88, bottom=0.12)
 
         # Pause/Resume button
-        self.pause_ax = plt.axes([0.02, 0.92, 0.08, 0.04])
-        self.pause_button = Button(self.pause_ax, 'Pause', color='lightgray')
+        self.pause_ax = plt.axes([0.02, 0.02, 0.08, 0.04])
+        self.pause_button = Button(self.pause_ax, 'Duraklat', color='lightgray')
         self.pause_button.on_clicked(self._toggle_pause)
 
         # Speed slider
-        self.speed_ax = plt.axes([0.12, 0.92, 0.12, 0.02])
+        self.speed_ax = plt.axes([0.12, 0.03, 0.12, 0.02])
         self.speed_slider = Slider(
             self.speed_ax, 'Hız', 0.1, 3.0,
             valinit=self.simulation_speed,
@@ -65,7 +66,7 @@ class ControlPanel:
         self.speed_slider.on_changed(self._update_speed)
 
         # Food spawn rate slider
-        self.food_ax = plt.axes([0.26, 0.92, 0.12, 0.02])
+        self.food_ax = plt.axes([0.26, 0.03, 0.12, 0.02])
         self.food_slider = Slider(
             self.food_ax, 'Yemek', 1, 20,
             valinit=self.food_spawn_rate,
@@ -75,7 +76,7 @@ class ControlPanel:
         self.food_slider.on_changed(self._update_food_rate)
 
         # Temperature modifier slider
-        self.temp_ax = plt.axes([0.40, 0.92, 0.12, 0.02])
+        self.temp_ax = plt.axes([0.40, 0.03, 0.12, 0.02])
         self.temp_slider = Slider(
             self.temp_ax, 'Sıcaklık', -1.0, 1.0,
             valinit=self.temperature_modifier,
@@ -84,16 +85,15 @@ class ControlPanel:
         )
         self.temp_slider.on_changed(self._update_temperature)
 
-        # AI Brain selector (Radio buttons) - RIGHT SIDE
-        ai_y = 0.60
-        self.ai_selector_ax = plt.axes([0.70, ai_y - 0.30, 0.14, 0.30])
-        self.ai_selector_ax.set_title('🧠 AI Brain:', fontsize=9, loc='left', pad=2)
+        # AI Brain selector - BOTTOM RIGHT
+        self.ai_selector_ax = plt.axes([0.88, 0.12, 0.11, 0.30], facecolor='#f0f0f0')
+        self.ai_selector_ax.set_title('🧠 AI Seç:', fontsize=8, loc='left', pad=2, color='black')
 
         ai_options = [
-            'No AI',
-            'Q-Learning',
+            'AI Yok',
+            'Q-Learn',
             'DQN',
-            'DoubleDQN',
+            'DblDQN',
             'CNN',
             'GA',
             'NEAT',
@@ -106,12 +106,15 @@ class ControlPanel:
             active=0,
             activecolor='#3498DB'
         )
+        for label in self.ai_radio.labels:
+            label.set_fontsize(7)
+            label.set_color('black')
         self.ai_radio.on_clicked(self._select_ai)
 
-        # Species spawn buttons - LEFT SIDE
-        button_y = 0.85
+        # Species spawn buttons - BOTTOM LEFT
+        button_y = 0.40
         button_height = 0.035
-        button_spacing = 0.045
+        button_spacing = 0.04
 
         species_list = [
             ('Euglena', '#2ECC71'),
@@ -135,7 +138,7 @@ class ControlPanel:
         y_pos = button_y - (len(species_list) * button_spacing)
         self.random_ax = plt.axes([0.02, y_pos, 0.10, button_height])
         self.random_button = Button(
-            self.random_ax, '+ Random',
+            self.random_ax, '+ Rastgele',
             color='#95A5A6',
             hovercolor='lightgray'
         )
@@ -151,25 +154,26 @@ class ControlPanel:
         )
         self.clear_button.on_clicked(self._clear_all)
 
-        # Statistics text (top right, above AI selector)
-        self.stats_ax = plt.axes([0.70, 0.65, 0.28, 0.25])
+        # Statistics text - TOP RIGHT
+        self.stats_ax = plt.axes([0.88, 0.45, 0.11, 0.43], facecolor='#f0f0f0')
         self.stats_ax.axis('off')
         self.stats_text = self.stats_ax.text(
-            0.05, 0.95, '',
+            0.05, 0.98, '',
             transform=self.stats_ax.transAxes,
             verticalalignment='top',
-            fontsize=8,
-            family='monospace'
+            fontsize=7,
+            family='monospace',
+            color='black'
         )
 
     def _toggle_pause(self, event):
         """Toggle pause/resume."""
         self.paused = not self.paused
         if self.paused:
-            self.pause_button.label.set_text('Resume')
+            self.pause_button.label.set_text('Devam Et')
             self.pause_button.color = '#E74C3C'
         else:
-            self.pause_button.label.set_text('Pause')
+            self.pause_button.label.set_text('Duraklat')
             self.pause_button.color = 'lightgray'
         plt.draw()
 
@@ -187,8 +191,13 @@ class ControlPanel:
 
     def _select_ai(self, label):
         """Select AI brain type."""
-        self.selected_ai = label
-        print(f"🧠 AI seçildi: {label}")
+        ai_map = {
+            'AI Yok': 'No AI',
+            'Q-Learn': 'Q-Learning',
+            'DblDQN': 'DoubleDQN'
+        }
+        self.selected_ai = ai_map.get(label, label)
+        print(f"🧠 AI seçildi: {self.selected_ai}")
 
     def _create_brain(self, ai_type):
         """Create AI brain instance based on selection."""

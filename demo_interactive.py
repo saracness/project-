@@ -50,22 +50,30 @@ def create_starting_organisms(environment, count=10):
 def main():
     """Run interactive simulation."""
     print("=" * 70)
-    print("🎮 INTERACTIVE MICRO-LIFE SIMULATION")
-    print("   İNTERAKTİF MİKRO-YAŞAM SİMÜLASYONU")
+    print("🎮 İNTERAKTİF MİKRO-YAŞAM SİMÜLASYONU")
     print("=" * 70)
     print()
+    print("Hangi ortamda simülasyon yapılsın?")
+    print()
+    print("1. 🌊 Göl (Lake)")
+    print("2. 🦠 Bağışıklık Sistemi (Immune System)")
+    print("3. 🐠 Okyanus Resifi (Ocean Reef)")
+    print("4. 🌲 Orman Tabanı (Forest Floor)")
+    print("5. 🌋 Volkanik Kaynak (Volcanic Vent)")
+    print("6. ❄️ Kuzey Kutbu (Arctic Ice)")
+    print("7. ⚪ Basit Ortam (Basic)")
+    print()
+    choice = input("Seçim (1-7) [Enter=Basit]: ").strip()
 
-    # Basic environment
-    env = Environment(width=500, height=500, use_intelligent_movement=True)
-    print("⚪ Basit ortam oluşturuldu")
-
-    # Add some initial food
-    for _ in range(30):
-        env.add_food(
-            x=random.uniform(0, env.width),
-            y=random.uniform(0, env.height),
-            energy=20
-        )
+    if choice in ['1', '2', '3', '4', '5', '6']:
+        from microlife.simulation.environment_presets import create_environment
+        env_types = {'1': 'lake', '2': 'immune', '3': 'reef', '4': 'forest', '5': 'volcanic', '6': 'arctic'}
+        env = create_environment(env_types[choice])
+    else:
+        env = Environment(width=500, height=500, use_intelligent_movement=True)
+        print("⚪ Basit ortam oluşturuldu")
+        for _ in range(30):
+            env.add_food(x=random.uniform(0, env.width), y=random.uniform(0, env.height), energy=20)
 
     # Create starting organisms
     print()
@@ -80,47 +88,14 @@ def main():
     control_panel = ControlPanel(env, renderer)
 
     print()
-    print("✅ Simulation ready!")
+    print("✅ Simülasyon hazır!")
     print()
-    print("=" * 70)
-    print("🎮 CONTROL PANEL / KONTROL PANELİ")
-    print("=" * 70)
+    print("KONTROLLER:")
+    print("  ALT: Duraklat, Hız, Yemek, Sıcaklık")
+    print("  SOL: Tür butonları (Euglena, Paramecium, vb.)")
+    print("  SAĞ: AI seç → Tür ekle")
     print()
-    print("📊 TOP BUTTONS:")
-    print("   • Pause/Resume: Simülasyonu duraklat/devam ettir")
-    print("   • Hız (Speed): Simülasyon hızı (0.1x - 3.0x)")
-    print("   • Yemek (Food): Yemek oluşturma sıklığı")
-    print("   • Sıcaklık (Temperature): Ortam sıcaklığı")
-    print()
-    print("🦠 LEFT BUTTONS (Click to add organisms):")
-    print("   • + Euglena: Uzun kuyruk, hızlı yüzücü 🏊")
-    print("   • + Paramecium: Tüylü, manevra yeteneği yüksek 🌀")
-    print("   • + Amoeba: Yavaş, eklenti yok 🐌")
-    print("   • + Spirillum: Küçük bakteri, flagella var 🦠")
-    print("   • + Stentor: Dev organizma, geniş görüş 👁️")
-    print("   • + Volvox: Kolonyal, hızlı ve büyük 🌿")
-    print("   • + Random: Rastgele organizma ekle 🎲")
-    print("   • Hepsini Sil: Tüm organizmaları temizle 🗑️")
-    print()
-    print("🧠 RIGHT PANEL (Select AI before spawning):")
-    print("   • No AI: Sadece içgüdü")
-    print("   • Q-Learning: Tablo tabanlı RL")
-    print("   • DQN: Derin öğrenme RL")
-    print("   • DoubleDQN: Gelişmiş DQN")
-    print("   • CNN: Görsel algılama")
-    print("   • GA: Genetik algoritma")
-    print("   • NEAT: Nöroevrim")
-    print("   • CMA-ES: Evrimsel strateji")
-    print()
-    print("🎨 VISUAL FEATURES:")
-    print("   • Long tails = Flagella (hızlı hareket)")
-    print("   • Short hairs around body = Cilia (dönme yeteneği)")
-    print("   • Size = Body size (büyükler daha çok enerji tüketir)")
-    print("   • Colors = Different species (farklı türler)")
-    print()
-    print("💡 TIP: AI seç → Tür ekle → Kombinasyon gözlemle!")
-    print("   (Select AI → Add Species → Observe combination!)")
-    print()
+    print("💡 Kuyruk=Hız, Tüyler=Manevra")
     print("=" * 70)
 
     # Animation update function

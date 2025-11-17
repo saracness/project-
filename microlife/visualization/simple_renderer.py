@@ -31,9 +31,10 @@ class SimpleRenderer:
         self.ax.set_facecolor('#0a0a0a')
         self.fig.patch.set_facecolor('#1a1a1a')
         self.ax.grid(True, alpha=0.2, color='#333333')
-        self.ax.set_xlabel('X Position', color='white')
-        self.ax.set_ylabel('Y Position', color='white')
-        self.ax.tick_params(colors='white')
+        self.ax.set_xlabel('X', color='white', fontsize=9)
+        self.ax.set_ylabel('Y', color='white', fontsize=9)
+        self.ax.tick_params(colors='white', labelsize=8)
+        self.ax.set_position([0.15, 0.12, 0.70, 0.76])
 
     def render_frame(self):
         """Render a single frame of the current environment state."""
