@@ -31,13 +31,14 @@ class AdvancedRenderer(SimpleRenderer):
             environment: The environment to visualize
             config: Simulation configuration
         """
-        # Call parent constructor
-        super().__init__(environment)
-
-        # Configuration
+        # Configuration - MUST be set BEFORE super().__init__()
+        # because parent calls setup_plot() which needs self.config
         self.config = config or SimulationConfig()
 
-        # Effect systems
+        # Store environment reference before parent init
+        self.env = environment
+
+        # Effect systems - Initialize BEFORE parent constructor
         self.trail_system = TrailSystem(
             max_length=self.config.trail_length,
             fade=self.config.trail_fade,
@@ -73,6 +74,9 @@ class AdvancedRenderer(SimpleRenderer):
 
         # Event tracking for particles
         self.tracked_events = set()
+
+        # NOW call parent constructor (which calls setup_plot())
+        super().__init__(environment)
 
     def setup_plot(self):
         """Set up the plot area with mini-map."""
