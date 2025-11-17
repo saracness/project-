@@ -92,10 +92,16 @@ def main():
     print()
     print("KONTROLLER:")
     print("  ALT: Duraklat, Hız, Yemek, Sıcaklık")
-    print("  SOL: Tür butonları (Euglena, Paramecium, vb.)")
-    print("  SAĞ: AI seç → Tür ekle")
+    print("  SOL: Tür butonları")
+    print("  SAĞ: AI seç → Tür ekle → İzle")
     print()
     print("💡 Kuyruk=Hız, Tüyler=Manevra")
+    print()
+    print("🧠 AI İPUCU:")
+    print("  AI'lar ilk 50-100 timestep random hareket eder (öğreniyor)")
+    print("  Sağ panelde AI istatistikleri görünür:")
+    print("    R = Toplam Reward (yemek bulma başarısı)")
+    print("    S = Survival Time (kaç timestep yaşadı)")
     print("=" * 70)
 
     # Animation update function

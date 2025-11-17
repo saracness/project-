@@ -177,8 +177,10 @@ class Environment:
         # Move all organisms
         for organism in self.organisms:
             if organism.alive:
-                # Phase 2: Use intelligent movement if enabled
-                if self.use_intelligent_movement:
+                # Use AI brain if available
+                if hasattr(organism, 'brain') and organism.brain:
+                    self._move_with_ai(organism)
+                elif self.use_intelligent_movement:
                     organism.move_intelligent(self.food_particles, bounds, self.obstacles)
                 else:
                     organism.move_random(bounds)
@@ -208,6 +210,69 @@ class Environment:
         # Spawn new food periodically
         if self.timestep % 20 == 0:
             self.spawn_food(count=2)
+
+    def _move_with_ai(self, organism):
+        """Move organism using AI brain."""
+        import math
+
+        # Get current state
+        old_energy = organism.energy
+        nearest_food = None
+        min_dist = float('inf')
+
+        for food in self.food_particles:
+            if not food.consumed:
+                dist = math.sqrt((food.x - organism.x)**2 + (food.y - organism.y)**2)
+                if dist < min_dist:
+                    min_dist = dist
+                    nearest_food = food
+
+        # Calculate food angle
+        food_angle = 0
+        if nearest_food:
+            food_angle = math.atan2(nearest_food.y - organism.y, nearest_food.x - organism.x)
+
+        # Prepare state for AI
+        state = {
+            'energy': organism.energy,
+            'nearest_food_distance': min_dist if nearest_food else 999,
+            'nearest_food_angle': food_angle,
+            'in_temperature_zone': any(z.affects(organism) for z in self.temperature_zones),
+            'near_obstacle': any(o.collides_with(organism) for o in self.obstacles),
+            'age': organism.age,
+            'speed_multiplier': organism.morphology.speed_multiplier if hasattr(organism, 'morphology') else 1.0,
+            'perception': organism.morphology.perception_multiplier if hasattr(organism, 'morphology') else 1.0
+        }
+
+        # Get action from AI
+        action = organism.brain.decide_action(state)
+
+        # Apply movement
+        dx, dy = action.get('move_direction', (0, 0))
+        speed = organism.speed * action.get('speed_multiplier', 1.0)
+        organism.x += dx * speed
+        organism.y += dy * speed
+
+        # Keep in bounds
+        organism.x = max(0, min(self.width, organism.x))
+        organism.y = max(0, min(self.height, organism.y))
+
+        # Update internal state
+        organism._update_after_movement()
+
+        # Update brain statistics
+        organism.brain.survival_time += 1
+        organism.brain.decision_count += 1
+
+        # Calculate reward and learn
+        new_state = state.copy()
+        new_state['energy'] = organism.energy
+        reward = organism.energy - old_energy  # Reward = energy gain
+        if reward > 15:  # Found food
+            reward += 5  # Bonus
+
+        organism.brain.total_reward += reward
+        organism.brain.learn(state, action, reward, new_state, not organism.alive)
 
     def _handle_obstacle_collision(self, organism):
         """

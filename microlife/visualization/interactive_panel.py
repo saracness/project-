@@ -304,15 +304,29 @@ class ControlPanel:
         # Count by species
         species_count = {}
         ai_count = {}
+        ai_stats = {}
+
         for org in self.environment.organisms:
             if org.alive:
                 species = org.morphology.species_name
                 species_count[species] = species_count.get(species, 0) + 1
 
-                # Count AI types
+                # Count AI types and gather stats
                 if hasattr(org, 'brain') and org.brain:
                     ai_type = org.brain.brain_type
                     ai_count[ai_type] = ai_count.get(ai_type, 0) + 1
+
+                    if ai_type not in ai_stats:
+                        ai_stats[ai_type] = {
+                            'avg_reward': 0,
+                            'max_survival': 0,
+                            'count': 0
+                        }
+
+                    ai_stats[ai_type]['avg_reward'] += org.brain.total_reward
+                    ai_stats[ai_type]['max_survival'] = max(ai_stats[ai_type]['max_survival'],
+                                                            org.brain.survival_time)
+                    ai_stats[ai_type]['count'] += 1
 
         # Average energy
         avg_energy = 0
@@ -320,21 +334,24 @@ class ControlPanel:
             avg_energy = sum(o.energy for o in self.environment.organisms if o.alive) / alive
 
         # Create stats text
-        stats = f"⏱️  Timestep: {self.environment.timestep}\n"
-        stats += f"🦠 Alive: {alive}\n"
-        stats += f"⚡ Avg Energy: {avg_energy:.1f}\n"
-        stats += f"🏃 Speed: {self.simulation_speed:.1f}x\n"
+        stats = f"T: {self.environment.timestep}\n"
+        stats += f"🦠 {alive}\n"
+        stats += f"⚡ {avg_energy:.0f}\n"
+        stats += f"🏃 {self.simulation_speed:.1f}x\n"
 
         if species_count:
-            stats += "\n📊 Top Species:\n"
-            for species, count in sorted(species_count.items(), key=lambda x: x[1], reverse=True)[:3]:
-                display_name = species[:10] if len(species) > 10 else species
-                stats += f"  {display_name}: {count}\n"
+            stats += "\n📊 Türler:\n"
+            for species, count in sorted(species_count.items(), key=lambda x: x[1], reverse=True)[:2]:
+                name = species[:8]
+                stats += f"{name}: {count}\n"
 
-        if ai_count:
-            stats += "\n🧠 AI Models:\n"
-            for ai_type, count in sorted(ai_count.items(), key=lambda x: x[1], reverse=True)[:3]:
-                stats += f"  {ai_type}: {count}\n"
+        if ai_stats:
+            stats += "\n🧠 AI:\n"
+            for ai_type, data in list(ai_stats.items())[:2]:
+                avg_r = data['avg_reward'] / data['count'] if data['count'] > 0 else 0
+                stats += f"{ai_type[:7]}\n"
+                stats += f"  R:{avg_r:.0f}\n"
+                stats += f"  S:{data['max_survival']}\n"
 
         self.stats_text.set_text(stats)
 
