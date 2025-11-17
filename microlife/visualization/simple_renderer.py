@@ -61,19 +61,52 @@ class SimpleRenderer:
                 circle = Circle((food.x, food.y), 2, color='#00ff00', alpha=0.6)
                 self.ax.add_patch(circle)
 
-        # Draw organisms
+        # Draw organisms with morphology
         for organism in self.env.organisms:
             if organism.alive:
-                # Color based on energy (red = low, yellow = high)
-                energy_ratio = min(organism.energy / 150.0, 1.0)
-                color = plt.cm.plasma(energy_ratio)
+                # Use organism's morphology color if available
+                if hasattr(organism, 'color'):
+                    color = organism.color
+                else:
+                    # Fallback: Color based on energy
+                    energy_ratio = min(organism.energy / 150.0, 1.0)
+                    color = plt.cm.plasma(energy_ratio)
 
-                # Draw organism
+                # Draw flagella (tail) if present
+                if hasattr(organism, 'morphology') and organism.morphology.flagella_length > 0.1:
+                    tail_length = organism.morphology.flagella_length * 15
+                    # Tail points backward from movement direction
+                    if len(organism.trail) >= 2:
+                        dx = organism.trail[-1][0] - organism.trail[-2][0]
+                        dy = organism.trail[-1][1] - organism.trail[-2][1]
+                        if dx != 0 or dy != 0:
+                            angle = np.arctan2(dy, dx)
+                            tail_x = organism.x - np.cos(angle) * tail_length
+                            tail_y = organism.y - np.sin(angle) * tail_length
+                            self.ax.plot([organism.x, tail_x], [organism.y, tail_y],
+                                       color=color, linewidth=2, alpha=0.7)
+
+                # Draw organism body
                 circle = Circle((organism.x, organism.y),
                               organism.size,
                               color=color,
-                              alpha=0.8)
+                              alpha=0.8,
+                              edgecolor='white',
+                              linewidth=0.5)
                 self.ax.add_patch(circle)
+
+                # Draw cilia (short lines around body) if present
+                if hasattr(organism, 'morphology') and organism.morphology.cilia_density > 0.3:
+                    num_cilia = int(organism.morphology.cilia_density * 12)
+                    for i in range(num_cilia):
+                        angle = (i / num_cilia) * 2 * np.pi
+                        cilia_start_x = organism.x + np.cos(angle) * organism.size
+                        cilia_start_y = organism.y + np.sin(angle) * organism.size
+                        cilia_end_x = cilia_start_x + np.cos(angle) * 3
+                        cilia_end_y = cilia_start_y + np.sin(angle) * 3
+                        self.ax.plot([cilia_start_x, cilia_end_x],
+                                   [cilia_start_y, cilia_end_y],
+                                   color=color, linewidth=1, alpha=0.5)
 
                 # Draw trail (optional)
                 if len(organism.trail) > 1:
@@ -81,7 +114,7 @@ class SimpleRenderer:
                     trail_y = [pos[1] for pos in organism.trail]
                     self.ax.plot(trail_x, trail_y,
                                color=color,
-                               alpha=0.3,
+                               alpha=0.2,
                                linewidth=0.5)
 
         # Add statistics text (Phase 2 enhanced)

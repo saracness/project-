@@ -1,9 +1,10 @@
 """
-Enhanced Organism class for Phase 2
-Organisms with intelligent food-seeking behavior
+Enhanced Organism class for Phase 2+
+Organisms with intelligent food-seeking behavior and morphology
 """
 import random
 import math
+from .morphology import Morphology, create_random_morphology
 
 
 class Organism:
@@ -19,7 +20,7 @@ class Organism:
         alive (bool): Whether organism is alive
     """
 
-    def __init__(self, x, y, energy=100.0, speed=1.0, size=3.0):
+    def __init__(self, x, y, energy=100.0, speed=1.0, size=3.0, morphology=None):
         """
         Initialize a new organism.
 
@@ -29,14 +30,23 @@ class Organism:
             energy (float): Starting energy level
             speed (float): Movement speed
             size (float): Visual size
+            morphology (Morphology): Physical characteristics (optional)
         """
         self.x = x
         self.y = y
         self.energy = energy
-        self.speed = speed
-        self.size = size
         self.alive = True
         self.age = 0
+
+        # Morphology system (new!)
+        if morphology is None:
+            morphology = create_random_morphology()
+        self.morphology = morphology
+
+        # Apply morphology advantages
+        self.speed = speed * self.morphology.speed_multiplier
+        self.size = self.morphology.visual_size
+        self.color = self.morphology.color
 
         # Movement history for visualization
         self.trail = [(x, y)]
@@ -44,7 +54,7 @@ class Organism:
 
         # Phase 2: Behavior attributes
         self.hunger_threshold = 100.0  # Seek food when energy below this
-        self.perception_radius = 100.0  # How far organism can "see"
+        self.perception_radius = 100.0 * self.morphology.perception_multiplier
         self.behavior_mode = "seeking"  # seeking, fleeing, wandering
 
     def move_random(self, bounds=None):
@@ -176,8 +186,9 @@ class Organism:
         if len(self.trail) > self.max_trail_length:
             self.trail.pop(0)
 
-        # Consume energy for movement
-        self.energy -= 0.1
+        # Consume energy for movement (affected by morphology)
+        energy_cost = 0.1 / self.morphology.energy_efficiency
+        self.energy -= energy_cost
         self.age += 1
 
         # Check if still alive
@@ -227,9 +238,14 @@ class Organism:
         offset = 5.0
         child_x = self.x + random.uniform(-offset, offset)
         child_y = self.y + random.uniform(-offset, offset)
-        child_speed = self.speed * random.uniform(0.8, 1.2)
+        child_speed = 1.0  # Base speed (will be modified by morphology)
 
-        return Organism(child_x, child_y, energy=energy_cost, speed=child_speed)
+        # Inherit and mutate morphology
+        from copy import deepcopy
+        child_morphology = deepcopy(self.morphology)
+        child_morphology.mutate(mutation_rate=0.15)
+
+        return Organism(child_x, child_y, energy=energy_cost, speed=child_speed, morphology=child_morphology)
 
     def get_state(self):
         """
