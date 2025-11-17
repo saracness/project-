@@ -254,19 +254,30 @@ class ControlPanel:
 
         organism = Organism(x, y, energy=120, morphology=morphology)
 
+        print(f"\n{'='*50}")
+        print(f"SPAWN: {species_name}")
+        print(f"Seçili AI: {self.selected_ai}")
+
         # Attach AI brain if selected
         if self.selected_ai != 'No AI':
             brain = self._create_brain(self.selected_ai)
+            print(f"Brain oluşturuldu: {brain is not None}")
             if brain:
                 organism.brain = brain
-                print(f"✨ {species_name} + {self.selected_ai} eklendi!")
-                print(f"   Morfoloji: {organism.morphology.get_advantages_summary()}")
+                print(f"Brain attach edildi: {hasattr(organism, 'brain')}")
+                print(f"Brain tipi: {organism.brain.brain_type}")
+                print(f"✨ {species_name} + {self.selected_ai} BAŞARILI!")
             else:
-                print(f"✨ {species_name} eklendi (AI yok)")
+                print(f"⚠️ Brain oluşturulamadı!")
         else:
-            print(f"✨ {species_name} eklendi")
+            print(f"AI seçili değil - normal organizma")
 
         self.environment.add_organism(organism)
+        total = len(self.environment.organisms)
+        with_brain = sum(1 for o in self.environment.organisms if hasattr(o, 'brain') and o.brain)
+        print(f"Toplam organizma: {total}")
+        print(f"Brain'li: {with_brain}")
+        print(f"{'='*50}\n")
 
     def _spawn_random(self, event):
         """Spawn random organism with selected AI."""
