@@ -1,0 +1,57 @@
+# Makefile for ONLY_FOR_NATURE_ULTIMATE
+#
+# Usage:
+#   make -f Makefile.nature.ultimate        # Build
+#   make -f Makefile.nature.ultimate run    # Build and run
+#   make -f Makefile.nature.ultimate clean  # Clean
+
+CXX = g++
+CXXFLAGS = -std=c++17 -O3 -march=native -flto -Wall -Wextra
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
+
+TARGET = ONLY_FOR_NATURE_ULTIMATE
+SOURCE = ONLY_FOR_NATURE_ULTIMATE.cpp
+
+.PHONY: all clean run
+
+all: $(TARGET)
+
+$(TARGET): $(SOURCE)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║          Compiling ONLY FOR NATURE - ULTIMATE EDITION              ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	@echo "Building with:"
+	@echo "  • C++17 standard"
+	@echo "  • O3 optimization"
+	@echo "  • Link-time optimization (LTO)"
+	@echo "  • Native architecture"
+	@echo ""
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCE) $(LDFLAGS)
+	@echo ""
+	@echo "✓ Build successful!"
+	@echo ""
+	@echo "New features in ULTIMATE edition:"
+	@echo "  ✓ Synaptic connections visualization"
+	@echo "  ✓ Hebbian learning (fire together, wire together)"
+	@echo "  ✓ Animated signal propagation"
+	@echo "  ✓ Interactive mouse & keyboard controls"
+	@echo "  ✓ Real-time activity graphs"
+	@echo "  ✓ Network statistics"
+	@echo "  ✓ 3 agents with different behaviors"
+	@echo ""
+	@echo "Run with: ./$(TARGET)"
+	@echo "Or:       make -f Makefile.nature.ultimate run"
+	@echo ""
+
+run: $(TARGET)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║                     Launching ULTIMATE Edition                     ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	./$(TARGET)
+
+clean:
+	@echo "Cleaning..."
+	rm -f $(TARGET)
+	@echo "✓ Clean complete"
