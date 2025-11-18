@@ -393,3 +393,21 @@ microlife/data/logs/*.json
 *.gif
 *.mp4
 !docs/*.png
+
+# C++ Compiled Binaries
+MICROLIFE_ACADEMIC
+MICROLIFE_ULTIMATE
+MICROLIFE_ULTIMATE_CINEMATIC
+ONLY_FOR_NATURE
+ONLY_FOR_NATURE_ULTIMATE
+
+# Experiment Data and Results
+experiment_data/
+batch_cpp_results/
+batch_results/
+analysis_test/
+analysis_results/
+my_experiment_results/
+figures/
+tables/
+supplements/
