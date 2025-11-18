@@ -17,6 +17,9 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'microlife'))
 
 import numpy as np
+# Configure matplotlib for non-GUI environment
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from simulation.neuron import Neuron
 from simulation.neuron_personalities import (
