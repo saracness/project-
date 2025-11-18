@@ -1,0 +1,2861 @@
+{
+  "environment": {
+    "width": 300.0,
+    "height": 300.0,
+    "depth": 150.0,
+    "time": 99.9999999999986
+  },
+  "neurons": [
+    {
+      "id": 960267,
+      "position": {
+        "x": 150.32269032700378,
+        "y": 110.13022153857267,
+        "z": 79.25219989250822
+      },
+      "velocity": {
+        "x": 0.005521845807894329,
+        "y": 0.08276123468451446,
+        "z": -0.5680998036386572
+      },
+      "firing_rate": 26.0,
+      "energy": 97.7942277345333,
+      "membrane_potential": -58.76307082018015,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 145299,
+      "position": {
+        "x": 7.2223302726391605,
+        "y": 229.8690875518127,
+        "z": 131.64307637292748
+      },
+      "velocity": {
+        "x": 0.47556522708361204,
+        "y": 0.21808067056545216,
+        "z": -0.5056759702991174
+      },
+      "firing_rate": 33.0,
+      "energy": 82.5337777345327,
+      "membrane_potential": -57.88485557216004,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 495319,
+      "position": {
+        "x": 197.44880976942326,
+        "y": 129.30040875415736,
+        "z": 133.91841952518718
+      },
+      "velocity": {
+        "x": -0.030242414111130347,
+        "y": -0.1564977308884193,
+        "z": 0.33278974615586343
+      },
+      "firing_rate": 41.0,
+      "energy": 64.49778596321255,
+      "membrane_potential": -23.882655684244774,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 390687,
+      "position": {
+        "x": 234.54011847783744,
+        "y": 78.12776127233633,
+        "z": 113.67919610110563
+      },
+      "velocity": {
+        "x": -0.003674626967343917,
+        "y": -1.6277658141084266,
+        "z": -0.36818052423999253
+      },
+      "firing_rate": 41.0,
+      "energy": 63.829784238518144,
+      "membrane_potential": -69.4267188363895,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 104491,
+      "position": {
+        "x": 97.66700652657954,
+        "y": 172.14075602674026,
+        "z": 53.09031006998908
+      },
+      "velocity": {
+        "x": -1.1956326607320589,
+        "y": 1.0675183760169689,
+        "z": 1.1961885543077526
+      },
+      "firing_rate": 21.0,
+      "energy": 121.33833604619701,
+      "membrane_potential": -71.29527946626703,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 424678,
+      "position": {
+        "x": 120.31425845507155,
+        "y": 92.46826475809914,
+        "z": 88.25002451015375
+      },
+      "velocity": {
+        "x": 1.205063057097618,
+        "y": 0.6738684031900217,
+        "z": 0.8689568558391257
+      },
+      "firing_rate": 38.0,
+      "energy": 72.74627773453103,
+      "membrane_potential": -59.44277382087364,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 704566,
+      "position": {
+        "x": 49.80753388696897,
+        "y": 193.9071964476703,
+        "z": 123.79402207783271
+      },
+      "velocity": {
+        "x": -0.16552492605960514,
+        "y": 0.12201379963457808,
+        "z": -0.011720733305219059
+      },
+      "firing_rate": 39.0,
+      "energy": 73.99741436884493,
+      "membrane_potential": -41.93359954612108,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 679922,
+      "position": {
+        "x": 178.66070896970083,
+        "y": 117.69797918114243,
+        "z": 145.74627198668247
+      },
+      "velocity": {
+        "x": -0.10718478371390852,
+        "y": -0.14394337222511125,
+        "z": 0.27380253009590394
+      },
+      "firing_rate": 40.0,
+      "energy": 63.931277734531754,
+      "membrane_potential": -50.05832046918191,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 267130,
+      "position": {
+        "x": 156.17511407715585,
+        "y": 63.54734329584292,
+        "z": 143.96009512519785
+      },
+      "velocity": {
+        "x": -1.7260898124627677,
+        "y": 0.9332303716364955,
+        "z": -0.38690442329786895
+      },
+      "firing_rate": 37.0,
+      "energy": 76.14296990716548,
+      "membrane_potential": -53.94864477295425,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 356485,
+      "position": {
+        "x": 123.493671196766,
+        "y": 98.13790519039061,
+        "z": 95.95359677369547
+      },
+      "velocity": {
+        "x": -0.2101853278902046,
+        "y": 0.0020547282356575703,
+        "z": -0.33729850495713676
+      },
+      "firing_rate": 36.0,
+      "energy": 74.03127773453124,
+      "membrane_potential": -69.38408208275838,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 807638,
+      "position": {
+        "x": 117.54521654870275,
+        "y": 84.57968861103063,
+        "z": 29.386117529759364
+      },
+      "velocity": {
+        "x": -0.20634707438640135,
+        "y": 0.017831285485669743,
+        "z": -0.5053105048990739
+      },
+      "firing_rate": 39.0,
+      "energy": 66.38877773453187,
+      "membrane_potential": -64.3104436228077,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 729299,
+      "position": {
+        "x": 86.00254537752649,
+        "y": 221.4775952923176,
+        "z": 48.00725962795115
+      },
+      "velocity": {
+        "x": 0.08373700242360979,
+        "y": -0.040516810727861674,
+        "z": -0.20303602652402672
+      },
+      "firing_rate": 35.0,
+      "energy": 84.65011911140789,
+      "membrane_potential": -67.62002613941276,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 846535,
+      "position": {
+        "x": 204.50813455494648,
+        "y": 215.34669741299058,
+        "z": 55.25834120686097
+      },
+      "velocity": {
+        "x": -0.006710092405367365,
+        "y": 0.05181998536040151,
+        "z": 0.00765542988863557
+      },
+      "firing_rate": 27.0,
+      "energy": 99.71922773453367,
+      "membrane_potential": -38.373795030332516,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 393872,
+      "position": {
+        "x": 223.43239114998562,
+        "y": 195.3926191768047,
+        "z": 106.20375598875958
+      },
+      "velocity": {
+        "x": 0.17925347204555753,
+        "y": 0.3351379419994913,
+        "z": 0.057095743032026004
+      },
+      "firing_rate": 37.0,
+      "energy": 84.26110662161598,
+      "membrane_potential": -59.444473265677736,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 599441,
+      "position": {
+        "x": 225.09489699704744,
+        "y": 185.2882580937544,
+        "z": 34.67191915905718
+      },
+      "velocity": {
+        "x": 0.004010075939285078,
+        "y": -0.021904679528666766,
+        "z": 0.1541880045753377
+      },
+      "firing_rate": 28.0,
+      "energy": 113.56360662161633,
+      "membrane_potential": -50.481261341368544,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 864671,
+      "position": {
+        "x": 83.25598912516939,
+        "y": 180.18070331103107,
+        "z": 58.00255504420469
+      },
+      "velocity": {
+        "x": -1.203135574230919,
+        "y": 1.145852945079334,
+        "z": 1.113321974216378
+      },
+      "firing_rate": 41.0,
+      "energy": 58.74877773453286,
+      "membrane_potential": 8.892792085037756,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 49458,
+      "position": {
+        "x": 223.18511235123037,
+        "y": 229.2866089997197,
+        "z": 34.48428352316884
+      },
+      "velocity": {
+        "x": -0.2874261231237464,
+        "y": -0.059212453112762256,
+        "z": -0.00855785787349041
+      },
+      "firing_rate": 26.0,
+      "energy": 108.10922773453272,
+      "membrane_potential": -62.05953346181851,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 509372,
+      "position": {
+        "x": 133.17305707408696,
+        "y": 190.57467918390455,
+        "z": 14.457809226243333
+      },
+      "velocity": {
+        "x": -0.5228499319933954,
+        "y": 0.678098246424662,
+        "z": 0.38482394390442276
+      },
+      "firing_rate": 35.0,
+      "energy": 80.72877773453231,
+      "membrane_potential": -44.4408178794922,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 996369,
+      "position": {
+        "x": 213.15276613003357,
+        "y": 96.15819069703933,
+        "z": 25.012530405678483
+      },
+      "velocity": {
+        "x": -0.40065117862430033,
+        "y": -0.3032702851152098,
+        "z": 0.14781929367454724
+      },
+      "firing_rate": 39.0,
+      "energy": 66.68377773453274,
+      "membrane_potential": -48.02022506692936,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 604199,
+      "position": {
+        "x": 222.86896634347966,
+        "y": 76.29170441269744,
+        "z": 99.11067517355812
+      },
+      "velocity": {
+        "x": 0.3061756064251503,
+        "y": -0.02819049626498786,
+        "z": -0.20932224996668936
+      },
+      "firing_rate": 42.0,
+      "energy": 63.2712777345329,
+      "membrane_potential": -59.53353127735038,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 399354,
+      "position": {
+        "x": 171.4331148607213,
+        "y": 50.34395877232987,
+        "z": 147.15569659163359
+      },
+      "velocity": {
+        "x": -1.4091438391667064,
+        "y": 0.8641394507433833,
+        "z": -0.8042154880643979
+      },
+      "firing_rate": 26.0,
+      "energy": 100.07922773453193,
+      "membrane_potential": -60.81774731886591,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 565541,
+      "position": {
+        "x": 73.34154661999331,
+        "y": 130.3465133497284,
+        "z": 72.64853217825257
+      },
+      "velocity": {
+        "x": 0.1136262857916094,
+        "y": 0.00893372097598475,
+        "z": 0.22685111203427594
+      },
+      "firing_rate": 33.0,
+      "energy": 95.80110662161589,
+      "membrane_potential": -44.18299123965206,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 722762,
+      "position": {
+        "x": 117.02658238116511,
+        "y": 81.2432614688406,
+        "z": 70.46153643099036
+      },
+      "velocity": {
+        "x": 0.45224504100709334,
+        "y": 0.6769686253120728,
+        "z": 0.9276369744848764
+      },
+      "firing_rate": 35.0,
+      "energy": 81.28877773453246,
+      "membrane_potential": -63.61583725409906,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 774326,
+      "position": {
+        "x": 61.142958302844335,
+        "y": 132.69535868472326,
+        "z": 109.52693813333907
+      },
+      "velocity": {
+        "x": -0.07689479400956847,
+        "y": 0.12107377191435481,
+        "z": 0.056734186358443225
+      },
+      "firing_rate": 37.0,
+      "energy": 84.0487777345334,
+      "membrane_potential": -39.50974673455335,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 845027,
+      "position": {
+        "x": 161.4361555825214,
+        "y": 183.9525341479137,
+        "z": 115.08579630377785
+      },
+      "velocity": {
+        "x": 0.018097643120281316,
+        "y": -0.11527104056009456,
+        "z": 0.18498269439750542
+      },
+      "firing_rate": 23.0,
+      "energy": 109.90922773453293,
+      "membrane_potential": -61.08612930219665,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 246160,
+      "position": {
+        "x": 232.14014783496097,
+        "y": 101.81214958689054,
+        "z": 111.80333563674827
+      },
+      "velocity": {
+        "x": -0.13586522477395094,
+        "y": -1.1515308421335464,
+        "z": -0.5573024605673566
+      },
+      "firing_rate": 36.0,
+      "energy": 79.72627773453162,
+      "membrane_potential": -47.98618914450094,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 362545,
+      "position": {
+        "x": 160.98569175691233,
+        "y": 105.2846928550255,
+        "z": 37.10128220595523
+      },
+      "velocity": {
+        "x": 0.09831270273864381,
+        "y": -1.8495094636036538,
+        "z": 0.7547511884858142
+      },
+      "firing_rate": 31.0,
+      "energy": 96.98845738115124,
+      "membrane_potential": -69.00117520076572,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 103306,
+      "position": {
+        "x": 250.57574944985802,
+        "y": 82.86120775422411,
+        "z": 53.3061741489102
+      },
+      "velocity": {
+        "x": 1.0662866251376828,
+        "y": 0.3415133229633819,
+        "z": -0.19334014277282802
+      },
+      "firing_rate": 38.0,
+      "energy": 70.13491436884476,
+      "membrane_potential": -63.33838933176251,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 79269,
+      "position": {
+        "x": 96.59159561455928,
+        "y": 104.45895314744637,
+        "z": 73.11232684651422
+      },
+      "velocity": {
+        "x": 0.8866509062499822,
+        "y": 1.0666070491475586,
+        "z": -0.8133163920113413
+      },
+      "firing_rate": 29.0,
+      "energy": 101.37922773453262,
+      "membrane_potential": -51.71709404470276,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 72539,
+      "position": {
+        "x": 159.29955118727153,
+        "y": 101.08271031974343,
+        "z": 58.99812429907292
+      },
+      "velocity": {
+        "x": 0.04146874093993266,
+        "y": -1.5267865193932395,
+        "z": 0.8262324938185166
+      },
+      "firing_rate": 42.0,
+      "energy": 63.516277734531705,
+      "membrane_potential": -67.726668196724,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 852811,
+      "position": {
+        "x": 15.479600157671173,
+        "y": 220.3695879213086,
+        "z": 142.02259475265123
+      },
+      "velocity": {
+        "x": -1.2514271990029577,
+        "y": 0.19180417135000927,
+        "z": -0.44114654106638385
+      },
+      "firing_rate": 31.0,
+      "energy": 95.48377773453053,
+      "membrane_potential": -43.77612974639794,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 632337,
+      "position": {
+        "x": 137.667297031444,
+        "y": 145.08018422858456,
+        "z": 91.0995870364545
+      },
+      "velocity": {
+        "x": -0.05854237305352479,
+        "y": -0.07097245542896934,
+        "z": -0.02350992824437264
+      },
+      "firing_rate": 41.0,
+      "energy": 60.77819709829953,
+      "membrane_potential": -45.98794967214899,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 205875,
+      "position": {
+        "x": 232.55734680992765,
+        "y": 73.94963025812423,
+        "z": 48.664669400521326
+      },
+      "velocity": {
+        "x": 1.4372704675735708,
+        "y": -0.3945651979722713,
+        "z": -0.04103061209997632
+      },
+      "firing_rate": 27.0,
+      "energy": 99.64922773453165,
+      "membrane_potential": -74.10031477299158,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 694840,
+      "position": {
+        "x": 117.5227894683522,
+        "y": 160.9420945138525,
+        "z": 71.70711981442413
+      },
+      "velocity": {
+        "x": 0.17039127134004023,
+        "y": 0.10202554712315803,
+        "z": 0.30627447388209367
+      },
+      "firing_rate": 43.0,
+      "energy": 55.19377773453281,
+      "membrane_potential": -49.5643679896,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 324300,
+      "position": {
+        "x": 195.84342202057837,
+        "y": 216.33917660195308,
+        "z": 2.4472483718574396
+      },
+      "velocity": {
+        "x": -0.4169790141564008,
+        "y": -0.06803897740257014,
+        "z": -0.2412854788113029
+      },
+      "firing_rate": 40.0,
+      "energy": 63.46127773453278,
+      "membrane_potential": -46.647292845181994,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 607659,
+      "position": {
+        "x": 150.1197141642184,
+        "y": 73.10985545852411,
+        "z": 43.23362904448307
+      },
+      "velocity": {
+        "x": -0.00972018375163258,
+        "y": -0.18592796544668533,
+        "z": 0.26685276573637673
+      },
+      "firing_rate": 41.0,
+      "energy": 63.993777734532244,
+      "membrane_potential": -59.103417342657345,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 139759,
+      "position": {
+        "x": 150.4959424188238,
+        "y": 172.94620720289018,
+        "z": 84.82697527752863
+      },
+      "velocity": {
+        "x": -0.14808196198187493,
+        "y": 0.04519195966160453,
+        "z": 0.24927761930022152
+      },
+      "firing_rate": 30.0,
+      "energy": 92.05916795423295,
+      "membrane_potential": -35.542255302772936,
+      "type": "GABAergic",
+      "is_excitatory": false,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.6,
+        "spine_density": 0.3,
+        "axon_length": 0.4,
+        "signal_speed": 0.875
+      }
+    },
+    {
+      "id": 210604,
+      "position": {
+        "x": 87.88432075793219,
+        "y": 112.64154840730379,
+        "z": 63.3444298785602
+      },
+      "velocity": {
+        "x": 0.1495525317270398,
+        "y": 0.9036297161048771,
+        "z": -0.7556884206730092
+      },
+      "firing_rate": 33.0,
+      "energy": 88.75179853536707,
+      "membrane_potential": -46.25021631327086,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 64518,
+      "position": {
+        "x": 186.74213896541227,
+        "y": 187.70648871555701,
+        "z": 41.75186260069588
+      },
+      "velocity": {
+        "x": 0.018974830128213053,
+        "y": 0.001733616108702997,
+        "z": 0.07067886810066673
+      },
+      "firing_rate": 39.0,
+      "energy": 67.84640055065708,
+      "membrane_potential": -42.639819703092634,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    },
+    {
+      "id": 485881,
+      "position": {
+        "x": 221.18199920975206,
+        "y": 103.5982932515825,
+        "z": 21.037286364523666
+      },
+      "velocity": {
+        "x": -0.6468199721548423,
+        "y": -0.4383966654600511,
+        "z": 0.17609708639177976
+      },
+      "firing_rate": 39.0,
+      "energy": 75.51679853536824,
+      "membrane_potential": -55.96127732046373,
+      "type": "glutamateergic",
+      "is_excitatory": true,
+      "stage": "mature",
+      "morphology": {
+        "dendritic_complexity": 0.85,
+        "spine_density": 0.8,
+        "axon_length": 0.85,
+        "signal_speed": 1.625
+      }
+    }
+  ],
+  "synapses": [
+    {
+      "pre_neuron_id": 960267,
+      "post_neuron_id": 722762,
+      "weight": 0.9998851199610741,
+      "spine_size": 0.9826499999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 960267,
+      "post_neuron_id": 607659,
+      "weight": 0.9988334338609001,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 960267,
+      "post_neuron_id": 399354,
+      "weight": 0.997,
+      "spine_size": 0.8223849999999977,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 960267,
+      "post_neuron_id": 356485,
+      "weight": 0.3573937011060062,
+      "spine_size": 0.5246249999999998,
+      "is_stable": false
+    },
+    {
+      "pre_neuron_id": 145299,
+      "post_neuron_id": 704566,
+      "weight": 0.997,
+      "spine_size": 0.9235499999999963,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 145299,
+      "post_neuron_id": 852811,
+      "weight": 0.997,
+      "spine_size": 0.7708749999999976,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 393872,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 565541,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 246160,
+      "weight": 0.997878069,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 485881,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 774326,
+      "weight": 0.997,
+      "spine_size": 0.955069999999996,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 607659,
+      "weight": 0.9988334338609001,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 64518,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 632337,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 390687,
+      "weight": 0.997561,
+      "spine_size": 0.8348999999999971,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 495319,
+      "post_neuron_id": 679922,
+      "weight": 0.998,
+      "spine_size": 0.6674499999999985,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 390687,
+      "post_neuron_id": 79269,
+      "weight": 0.997468559,
+      "spine_size": 0.8850499999999972,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 390687,
+      "post_neuron_id": 599441,
+      "weight": 0.998,
+      "spine_size": 0.9974249999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 390687,
+      "post_neuron_id": 104491,
+      "weight": 0.9997433381736421,
+      "spine_size": 0.8978849999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 390687,
+      "post_neuron_id": 495319,
+      "weight": 0.997,
+      "spine_size": 0.9678749999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 390687,
+      "post_neuron_id": 246160,
+      "weight": 0.6955728895629092,
+      "spine_size": 0.5344749999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 104491,
+      "post_neuron_id": 390687,
+      "weight": 0.998461,
+      "spine_size": 0.9432499999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 104491,
+      "post_neuron_id": 846535,
+      "weight": 0.997,
+      "spine_size": 0.8095499999999979,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 104491,
+      "post_neuron_id": 509372,
+      "weight": 0.997,
+      "spine_size": 0.839824999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 104491,
+      "post_neuron_id": 864671,
+      "weight": 0.5130361621000002,
+      "spine_size": 0.5295499999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 64518,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 104491,
+      "weight": 0.9995932435383451,
+      "spine_size": 0.8216299999999978,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 845027,
+      "weight": 0.997,
+      "spine_size": 0.808794999999998,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 509372,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 604199,
+      "weight": 0.997,
+      "spine_size": 0.9777249999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 393872,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 722762,
+      "weight": 0.9998851199610741,
+      "spine_size": 0.8644499999999968,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 424678,
+      "post_neuron_id": 807638,
+      "weight": 0.9999246272064607,
+      "spine_size": 0.5837249999999993,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 704566,
+      "post_neuron_id": 846535,
+      "weight": 0.997,
+      "spine_size": 0.8548499999999976,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 704566,
+      "post_neuron_id": 139759,
+      "weight": 0.998,
+      "spine_size": 0.8737249999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 704566,
+      "post_neuron_id": 49458,
+      "weight": 0.997,
+      "spine_size": 0.8812749999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 704566,
+      "post_neuron_id": 145299,
+      "weight": 0.9999707990354697,
+      "spine_size": 0.6969999999999983,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 679922,
+      "post_neuron_id": 356485,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 679922,
+      "post_neuron_id": 996369,
+      "weight": 0.999,
+      "spine_size": 0.9974249999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 679922,
+      "post_neuron_id": 864671,
+      "weight": 0.997,
+      "spine_size": 0.9777249999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 679922,
+      "post_neuron_id": 960267,
+      "weight": 0.997,
+      "spine_size": 0.8133249999999979,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 679922,
+      "post_neuron_id": 704566,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 679922,
+      "post_neuron_id": 495319,
+      "weight": 0.997,
+      "spine_size": 0.7019249999999982,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 267130,
+      "post_neuron_id": 604199,
+      "weight": 0.998,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 267130,
+      "post_neuron_id": 996369,
+      "weight": 0.9979817519963686,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 267130,
+      "post_neuron_id": 246160,
+      "weight": 0.997878069,
+      "spine_size": 0.9777249999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 267130,
+      "post_neuron_id": 565541,
+      "weight": 0.997,
+      "spine_size": 0.8831649999999965,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 267130,
+      "post_neuron_id": 399354,
+      "weight": 0.705103586763284,
+      "spine_size": 0.5377499999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 356485,
+      "post_neuron_id": 722762,
+      "weight": 0.9998851199610741,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 356485,
+      "post_neuron_id": 72539,
+      "weight": 0.999,
+      "spine_size": 0.9678749999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 356485,
+      "post_neuron_id": 393872,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 356485,
+      "post_neuron_id": 485881,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 356485,
+      "post_neuron_id": 960267,
+      "weight": 0.997,
+      "spine_size": 0.7808599999999981,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 356485,
+      "post_neuron_id": 424678,
+      "weight": 0.43436107655220724,
+      "spine_size": 0.5147749999999999,
+      "is_stable": false
+    },
+    {
+      "pre_neuron_id": 807638,
+      "post_neuron_id": 509372,
+      "weight": 0.997,
+      "spine_size": 0.9727999999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 807638,
+      "post_neuron_id": 846535,
+      "weight": 0.999,
+      "spine_size": 0.8948649999999974,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 807638,
+      "post_neuron_id": 960267,
+      "weight": 0.997,
+      "spine_size": 0.8480549999999977,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 729299,
+      "post_neuron_id": 79269,
+      "weight": 0.998,
+      "spine_size": 0.8737249999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 729299,
+      "post_neuron_id": 399354,
+      "weight": 0.997,
+      "spine_size": 0.9144949999999971,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 846535,
+      "post_neuron_id": 774326,
+      "weight": 0.998,
+      "spine_size": 0.9530999999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 393872,
+      "post_neuron_id": 362545,
+      "weight": 0.9999069471684701,
+      "spine_size": 0.9235499999999963,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 393872,
+      "post_neuron_id": 694840,
+      "weight": 0.997,
+      "spine_size": 0.962949999999996,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 599441,
+      "post_neuron_id": 485881,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 599441,
+      "post_neuron_id": 604199,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 599441,
+      "post_neuron_id": 49458,
+      "weight": 0.997,
+      "spine_size": 0.8337099999999976,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 599441,
+      "post_neuron_id": 79269,
+      "weight": 0.997468559,
+      "spine_size": 0.9680999999999966,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 864671,
+      "post_neuron_id": 604199,
+      "weight": 0.997,
+      "spine_size": 0.9924999999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 864671,
+      "post_neuron_id": 960267,
+      "weight": 0.997,
+      "spine_size": 0.8178549999999978,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 864671,
+      "post_neuron_id": 104491,
+      "weight": 0.9995932435383451,
+      "spine_size": 0.8639099999999974,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 864671,
+      "post_neuron_id": 774326,
+      "weight": 0.997,
+      "spine_size": 0.9747699999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 864671,
+      "post_neuron_id": 424678,
+      "weight": 0.9998635993823385,
+      "spine_size": 0.9974249999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 864671,
+      "post_neuron_id": 72539,
+      "weight": 0.997,
+      "spine_size": 0.8102749999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 49458,
+      "post_neuron_id": 774326,
+      "weight": 0.997,
+      "spine_size": 0.9875749999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 49458,
+      "post_neuron_id": 104491,
+      "weight": 0.9998784233454094,
+      "spine_size": 0.9114749999999971,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 49458,
+      "post_neuron_id": 846535,
+      "weight": 0.997,
+      "spine_size": 0.8986399999999972,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 49458,
+      "post_neuron_id": 807638,
+      "weight": 0.9999246272064607,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 49458,
+      "post_neuron_id": 324300,
+      "weight": 0.997,
+      "spine_size": 0.8595249999999969,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 509372,
+      "post_neuron_id": 390687,
+      "weight": 0.998461,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 509372,
+      "post_neuron_id": 852811,
+      "weight": 0.997,
+      "spine_size": 0.9530999999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 509372,
+      "post_neuron_id": 845027,
+      "weight": 0.997,
+      "spine_size": 0.8170999999999978,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 509372,
+      "post_neuron_id": 604199,
+      "weight": 0.997,
+      "spine_size": 0.962949999999996,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 509372,
+      "post_neuron_id": 72539,
+      "weight": 0.997,
+      "spine_size": 0.8348999999999971,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 509372,
+      "post_neuron_id": 864671,
+      "weight": 0.997,
+      "spine_size": 0.6280499999999989,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 509372,
+      "post_neuron_id": 104491,
+      "weight": 0.9995932435383451,
+      "spine_size": 0.5830499999999994,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 996369,
+      "post_neuron_id": 139759,
+      "weight": 0.997,
+      "spine_size": 0.8548499999999974,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 996369,
+      "post_neuron_id": 495319,
+      "weight": 0.997,
+      "spine_size": 0.958024999999996,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 996369,
+      "post_neuron_id": 205875,
+      "weight": 0.9998851199610741,
+      "spine_size": 0.8601349999999974,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 996369,
+      "post_neuron_id": 393872,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 996369,
+      "post_neuron_id": 852811,
+      "weight": 0.999,
+      "spine_size": 0.9383249999999962,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 996369,
+      "post_neuron_id": 145299,
+      "weight": 0.9999707990354697,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 996369,
+      "post_neuron_id": 485881,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 604199,
+      "post_neuron_id": 960267,
+      "weight": 0.997,
+      "spine_size": 0.8888249999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 604199,
+      "post_neuron_id": 852811,
+      "weight": 0.998,
+      "spine_size": 0.9875749999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 604199,
+      "post_neuron_id": 362545,
+      "weight": 0.9999721871610556,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 604199,
+      "post_neuron_id": 267130,
+      "weight": 0.997,
+      "spine_size": 0.7113999999999985,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 604199,
+      "post_neuron_id": 246160,
+      "weight": 0.6955728895629092,
+      "spine_size": 0.5344749999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 399354,
+      "post_neuron_id": 807638,
+      "weight": 0.9999246272064607,
+      "spine_size": 0.9136999999999964,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 399354,
+      "post_neuron_id": 495319,
+      "weight": 0.999,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 399354,
+      "post_neuron_id": 72539,
+      "weight": 0.999,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 399354,
+      "post_neuron_id": 960267,
+      "weight": 0.997,
+      "spine_size": 0.8495649999999977,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 399354,
+      "post_neuron_id": 267130,
+      "weight": 0.997,
+      "spine_size": 0.5905999999999993,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 565541,
+      "post_neuron_id": 846535,
+      "weight": 0.997,
+      "spine_size": 0.8548499999999976,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 565541,
+      "post_neuron_id": 362545,
+      "weight": 0.9999069471684701,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 565541,
+      "post_neuron_id": 774326,
+      "weight": 0.997,
+      "spine_size": 0.726549999999998,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 64518,
+      "weight": 0.997,
+      "spine_size": 0.9875749999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 79269,
+      "weight": 0.997468559,
+      "spine_size": 0.8925999999999972,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 485881,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 393872,
+      "weight": 0.997,
+      "spine_size": 0.9974249999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 845027,
+      "weight": 0.997,
+      "spine_size": 0.8208749999999979,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 729299,
+      "weight": 0.997,
+      "spine_size": 0.958024999999996,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 424678,
+      "weight": 0.9998635993823385,
+      "spine_size": 0.9727999999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 722762,
+      "post_neuron_id": 807638,
+      "weight": 0.9999246272064607,
+      "spine_size": 0.6969999999999983,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 774326,
+      "post_neuron_id": 424678,
+      "weight": 0.9997838329392617,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 774326,
+      "post_neuron_id": 495319,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 774326,
+      "post_neuron_id": 485881,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 774326,
+      "post_neuron_id": 103306,
+      "weight": 0.9993111543605228,
+      "spine_size": 0.9481749999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 845027,
+      "post_neuron_id": 604199,
+      "weight": 0.997,
+      "spine_size": 0.9284749999999963,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 845027,
+      "post_neuron_id": 103306,
+      "weight": 0.9995653409433557,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 845027,
+      "post_neuron_id": 324300,
+      "weight": 0.998,
+      "spine_size": 0.9432499999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 845027,
+      "post_neuron_id": 607659,
+      "weight": 0.9988334338609001,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 845027,
+      "post_neuron_id": 145299,
+      "weight": 0.9999912720364319,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 845027,
+      "post_neuron_id": 632337,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 845027,
+      "post_neuron_id": 139759,
+      "weight": 0.9218376477339933,
+      "spine_size": 0.5566249999999996,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 246160,
+      "post_neuron_id": 205875,
+      "weight": 0.9998851199610741,
+      "spine_size": 0.7974699999999979,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 246160,
+      "post_neuron_id": 607659,
+      "weight": 0.9988334338609001,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 246160,
+      "post_neuron_id": 694840,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 246160,
+      "post_neuron_id": 390687,
+      "weight": 0.997561,
+      "spine_size": 0.8151999999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 362545,
+      "post_neuron_id": 210604,
+      "weight": 0.997,
+      "spine_size": 0.8989249999999965,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 362545,
+      "post_neuron_id": 632337,
+      "weight": 0.997,
+      "spine_size": 0.9087749999999964,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 362545,
+      "post_neuron_id": 864671,
+      "weight": 0.997,
+      "spine_size": 0.9777249999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 362545,
+      "post_neuron_id": 139759,
+      "weight": 0.997,
+      "spine_size": 0.8850499999999972,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 362545,
+      "post_neuron_id": 509372,
+      "weight": 0.998,
+      "spine_size": 0.839824999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 362545,
+      "post_neuron_id": 72539,
+      "weight": 0.997,
+      "spine_size": 0.6920749999999983,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 103306,
+      "post_neuron_id": 845027,
+      "weight": 0.998,
+      "spine_size": 0.8548499999999976,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 103306,
+      "post_neuron_id": 509372,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 103306,
+      "post_neuron_id": 694840,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 103306,
+      "post_neuron_id": 267130,
+      "weight": 0.997,
+      "spine_size": 0.919024999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 103306,
+      "post_neuron_id": 64518,
+      "weight": 0.999,
+      "spine_size": 0.9136999999999964,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 103306,
+      "post_neuron_id": 565541,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 79269,
+      "post_neuron_id": 632337,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 79269,
+      "post_neuron_id": 399354,
+      "weight": 0.997,
+      "spine_size": 0.8827849999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 79269,
+      "post_neuron_id": 807638,
+      "weight": 0.9999524400454051,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 79269,
+      "post_neuron_id": 845027,
+      "weight": 0.997,
+      "spine_size": 0.8004899999999981,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 79269,
+      "post_neuron_id": 390687,
+      "weight": 0.997561,
+      "spine_size": 0.9481749999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 79269,
+      "post_neuron_id": 210604,
+      "weight": 0.997,
+      "spine_size": 0.8792249999999967,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 72539,
+      "post_neuron_id": 607659,
+      "weight": 0.9992639010709,
+      "spine_size": 0.9727999999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 72539,
+      "post_neuron_id": 774326,
+      "weight": 0.998,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 72539,
+      "post_neuron_id": 996369,
+      "weight": 0.9979817519963686,
+      "spine_size": 0.9727999999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 72539,
+      "post_neuron_id": 362545,
+      "weight": 0.9604666882146037,
+      "spine_size": 0.5935749999999992,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 852811,
+      "post_neuron_id": 210604,
+      "weight": 0.997,
+      "spine_size": 0.9727999999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 852811,
+      "post_neuron_id": 495319,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 852811,
+      "post_neuron_id": 424678,
+      "weight": 0.9997838329392617,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 852811,
+      "post_neuron_id": 145299,
+      "weight": 0.9999707990354697,
+      "spine_size": 0.9924999999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 852811,
+      "post_neuron_id": 704566,
+      "weight": 0.997,
+      "spine_size": 0.9924999999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 704566,
+      "weight": 0.997,
+      "spine_size": 0.9087749999999964,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 729299,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 679922,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 485881,
+      "weight": 0.997,
+      "spine_size": 0.9530999999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 139759,
+      "weight": 0.997,
+      "spine_size": 0.8472999999999975,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 845027,
+      "weight": 0.997,
+      "spine_size": 0.7672699999999983,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 362545,
+      "weight": 0.9999069471684701,
+      "spine_size": 0.7068499999999982,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 632337,
+      "post_neuron_id": 694840,
+      "weight": 0.998,
+      "spine_size": 0.7462499999999979,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 205875,
+      "post_neuron_id": 729299,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 205875,
+      "post_neuron_id": 960267,
+      "weight": 0.998,
+      "spine_size": 0.8087949999999979,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 694840,
+      "post_neuron_id": 72539,
+      "weight": 0.999,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 694840,
+      "post_neuron_id": 139759,
+      "weight": 0.997,
+      "spine_size": 0.922799999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 694840,
+      "post_neuron_id": 205875,
+      "weight": 0.9999275111193493,
+      "spine_size": 0.8812749999999973,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 694840,
+      "post_neuron_id": 607659,
+      "weight": 0.9988334338609001,
+      "spine_size": 0.9727999999999959,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 694840,
+      "post_neuron_id": 79269,
+      "weight": 0.997468559,
+      "spine_size": 0.915249999999997,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 694840,
+      "post_neuron_id": 704566,
+      "weight": 0.997,
+      "spine_size": 0.9826499999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 694840,
+      "post_neuron_id": 632337,
+      "weight": 0.997,
+      "spine_size": 0.7511749999999978,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 324300,
+      "post_neuron_id": 722762,
+      "weight": 0.999965663161797,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 324300,
+      "post_neuron_id": 104491,
+      "weight": 0.9995932435383451,
+      "spine_size": 0.8480549999999976,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 324300,
+      "post_neuron_id": 72539,
+      "weight": 0.998,
+      "spine_size": 0.9777249999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 607659,
+      "post_neuron_id": 704566,
+      "weight": 0.997,
+      "spine_size": 0.8939999999999966,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 607659,
+      "post_neuron_id": 807638,
+      "weight": 0.9999246272064607,
+      "spine_size": 0.9383249999999962,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 139759,
+      "post_neuron_id": 632337,
+      "weight": 0.41544493807789845,
+      "spine_size": 0.5147749999999999,
+      "is_stable": false
+    },
+    {
+      "pre_neuron_id": 210604,
+      "post_neuron_id": 565541,
+      "weight": 0.997,
+      "spine_size": 0.950144999999996,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 210604,
+      "post_neuron_id": 704566,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 210604,
+      "post_neuron_id": 495319,
+      "weight": 0.997,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 210604,
+      "post_neuron_id": 103306,
+      "weight": 0.9993111543605228,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 210604,
+      "post_neuron_id": 774326,
+      "weight": 0.997,
+      "spine_size": 0.9698449999999958,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 210604,
+      "post_neuron_id": 424678,
+      "weight": 0.9997838329392617,
+      "spine_size": 0.6723749999999985,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 64518,
+      "post_neuron_id": 607659,
+      "weight": 0.9988334338609001,
+      "spine_size": 0.9924999999999957,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 64518,
+      "post_neuron_id": 846535,
+      "weight": 0.997,
+      "spine_size": 0.7989799999999979,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 485881,
+      "post_neuron_id": 604199,
+      "weight": 0.998,
+      "spine_size": 0.8989249999999965,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 485881,
+      "post_neuron_id": 845027,
+      "weight": 0.999,
+      "spine_size": 0.8654199999999976,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 485881,
+      "post_neuron_id": 267130,
+      "weight": 0.997,
+      "spine_size": 0.8925999999999972,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 485881,
+      "post_neuron_id": 72539,
+      "weight": 0.997,
+      "spine_size": 0.9530999999999961,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 485881,
+      "post_neuron_id": 996369,
+      "weight": 0.9979817519963686,
+      "spine_size": 1.0,
+      "is_stable": true
+    },
+    {
+      "pre_neuron_id": 485881,
+      "post_neuron_id": 205875,
+      "weight": 0.7699529303739164,
+      "spine_size": 0.5332199999999998,
+      "is_stable": true
+    }
+  ],
+  "learning_history": {
+    "time": [
+      0.1,
+      0.2,
+      0.30000000000000004,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.7999999999999999,
+      0.8999999999999999,
+      0.9999999999999999,
+      10.09999999999998,
+      10.19999999999998,
+      10.29999999999998,
+      10.399999999999979,
+      10.499999999999979,
+      10.599999999999978,
+      10.699999999999978,
+      10.799999999999978,
+      10.899999999999977,
+      10.999999999999977,
+      20.000000000000014,
+      20.100000000000016,
+      20.200000000000017,
+      20.30000000000002,
+      20.40000000000002,
+      20.50000000000002,
+      20.600000000000023,
+      20.700000000000024,
+      20.800000000000026,
+      20.900000000000027,
+      30.000000000000156,
+      30.100000000000158,
+      30.20000000000016,
+      30.30000000000016,
+      30.400000000000162,
+      30.500000000000163,
+      30.600000000000165,
+      30.700000000000166,
+      30.800000000000168,
+      30.90000000000017,
+      40.0000000000003,
+      40.1000000000003,
+      40.2000000000003,
+      40.3000000000003,
+      40.400000000000304,
+      40.500000000000306,
+      40.60000000000031,
+      40.70000000000031,
+      40.80000000000031,
+      40.90000000000031,
+      50.00000000000044,
+      50.10000000000044,
+      50.20000000000044,
+      50.300000000000445,
+      50.400000000000446,
+      50.50000000000045,
+      50.60000000000045,
+      50.70000000000045,
+      50.80000000000045,
+      50.90000000000045,
+      60.00000000000058,
+      60.100000000000584,
+      60.200000000000585,
+      60.30000000000059,
+      60.40000000000059,
+      60.50000000000059,
+      60.60000000000059,
+      60.70000000000059,
+      60.800000000000594,
+      60.900000000000595,
+      70.0000000000003,
+      70.10000000000029,
+      70.20000000000029,
+      70.30000000000028,
+      70.40000000000028,
+      70.50000000000027,
+      70.60000000000026,
+      70.70000000000026,
+      70.80000000000025,
+      70.90000000000025,
+      80.09999999999972,
+      80.19999999999972,
+      80.29999999999971,
+      80.39999999999971,
+      80.4999999999997,
+      80.5999999999997,
+      80.69999999999969,
+      80.79999999999968,
+      80.89999999999968,
+      80.99999999999967,
+      90.09999999999916,
+      90.19999999999915,
+      90.29999999999914,
+      90.39999999999914,
+      90.49999999999913,
+      90.59999999999913,
+      90.69999999999912,
+      90.79999999999912,
+      90.89999999999911,
+      90.9999999999991
+    ],
+    "accuracy": [
+      1.0,
+      0.5,
+      0.6666666666666666,
+      0.75,
+      0.6,
+      0.6666666666666666,
+      0.5714285714285714,
+      0.625,
+      0.5555555555555556,
+      0.6,
+      0.34,
+      0.36,
+      0.34,
+      0.34,
+      0.36,
+      0.36,
+      0.36,
+      0.34,
+      0.34,
+      0.32,
+      0.54,
+      0.54,
+      0.52,
+      0.54,
+      0.54,
+      0.56,
+      0.54,
+      0.56,
+      0.58,
+      0.58,
+      0.36,
+      0.34,
+      0.34,
+      0.34,
+      0.36,
+      0.36,
+      0.36,
+      0.36,
+      0.38,
+      0.38,
+      0.5,
+      0.48,
+      0.48,
+      0.48,
+      0.48,
+      0.48,
+      0.48,
+      0.48,
+      0.5,
+      0.52,
+      0.34,
+      0.34,
+      0.36,
+      0.38,
+      0.4,
+      0.42,
+      0.42,
+      0.4,
+      0.38,
+      0.36,
+      0.44,
+      0.44,
+      0.46,
+      0.46,
+      0.46,
+      0.46,
+      0.46,
+      0.44,
+      0.46,
+      0.46,
+      0.36,
+      0.36,
+      0.38,
+      0.38,
+      0.36,
+      0.36,
+      0.36,
+      0.38,
+      0.38,
+      0.38,
+      0.5,
+      0.5,
+      0.5,
+      0.52,
+      0.54,
+      0.56,
+      0.56,
+      0.54,
+      0.56,
+      0.56,
+      0.56,
+      0.58,
+      0.58,
+      0.6,
+      0.6,
+      0.62,
+      0.62,
+      0.62,
+      0.64,
+      0.62
+    ],
+    "reward": [
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      -0.1,
+      1.0,
+      1.0,
+      -0.1,
+      -0.1,
+      -0.1,
+      -0.1,
+      1.0,
+      -0.1,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      -0.1,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      -0.1,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      -0.1,
+      -0.1,
+      1.0,
+      -0.1,
+      -0.1,
+      -0.1,
+      -0.1,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      1.0,
+      -0.1,
+      1.0,
+      -0.1
+    ],
+    "num_synapses": [
+      140,
+      141,
+      141,
+      141,
+      141,
+      141,
+      142,
+      142,
+      142,
+      142,
+      152,
+      153,
+      153,
+      153,
+      153,
+      153,
+      154,
+      154,
+      154,
+      154,
+      162,
+      162,
+      162,
+      162,
+      162,
+      162,
+      162,
+      162,
+      162,
+      162,
+      166,
+      166,
+      166,
+      166,
+      167,
+      168,
+      168,
+      168,
+      169,
+      169,
+      177,
+      177,
+      177,
+      177,
+      177,
+      178,
+      179,
+      179,
+      179,
+      179,
+      183,
+      185,
+      186,
+      187,
+      188,
+      188,
+      188,
+      188,
+      188,
+      189,
+      198,
+      198,
+      198,
+      198,
+      198,
+      198,
+      198,
+      198,
+      198,
+      198,
+      203,
+      203,
+      203,
+      203,
+      203,
+      203,
+      203,
+      203,
+      203,
+      203,
+      207,
+      207,
+      207,
+      207,
+      207,
+      207,
+      207,
+      208,
+      208,
+      208,
+      215,
+      215,
+      215,
+      217,
+      217,
+      218,
+      218,
+      218,
+      218,
+      218
+    ],
+    "avg_firing_rate": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      3.275,
+      3.3,
+      3.4,
+      3.45,
+      3.475,
+      3.525,
+      3.55,
+      3.575,
+      3.6,
+      3.6,
+      6.75,
+      6.75,
+      6.825,
+      6.85,
+      6.85,
+      6.85,
+      6.875,
+      6.9,
+      6.95,
+      7.05,
+      10.325,
+      10.325,
+      10.35,
+      10.4,
+      10.425,
+      10.475,
+      10.525,
+      10.575,
+      10.6,
+      10.7,
+      13.9,
+      13.925,
+      13.95,
+      13.975,
+      13.975,
+      13.975,
+      14.025,
+      14.1,
+      14.15,
+      14.175,
+      17.275,
+      17.325,
+      17.325,
+      17.35,
+      17.425,
+      17.425,
+      17.425,
+      17.45,
+      17.525,
+      17.575,
+      20.825,
+      20.85,
+      20.9,
+      20.9,
+      20.95,
+      20.975,
+      20.975,
+      21.0,
+      21.05,
+      21.05,
+      24.25,
+      24.3,
+      24.325,
+      24.325,
+      24.325,
+      24.35,
+      24.35,
+      24.375,
+      24.425,
+      24.475,
+      27.675,
+      27.725,
+      27.75,
+      27.775,
+      27.9,
+      27.9,
+      27.95,
+      27.95,
+      27.975,
+      28.025,
+      31.3,
+      31.35,
+      31.375,
+      31.4,
+      31.475,
+      31.5,
+      31.525,
+      31.55,
+      31.6,
+      31.6
+    ]
+  }
+}
