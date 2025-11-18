@@ -1,0 +1,57 @@
+#version 430 core
+
+// Compute shader for GPU-based particle physics
+layout(local_size_x = 256) in;
+
+// Particle structure
+struct Particle {
+    vec2 position;
+    vec2 velocity;
+    vec4 color;
+    float size;
+    float lifetime;
+    float max_lifetime;
+    float padding;  // Align to 16 bytes
+};
+
+// Shader storage buffer
+layout(std430, binding = 0) buffer ParticleBuffer {
+    Particle particles[];
+};
+
+// Uniforms
+uniform float dt;  // Delta time
+uniform vec2 gravity;  // Gravity vector
+uniform float damping;  // Air resistance (0-1)
+uniform uint particle_count;
+
+void main() {
+    uint id = gl_GlobalInvocationID.x;
+
+    // Bounds check
+    if (id >= particle_count) {
+        return;
+    }
+
+    Particle p = particles[id];
+
+    // Skip dead particles
+    if (p.lifetime <= 0.0) {
+        return;
+    }
+
+    // Apply gravity
+    p.velocity += gravity * dt;
+
+    // Apply damping (air resistance)
+    p.velocity *= (1.0 - damping * dt);
+
+    // Update position
+    p.position += p.velocity * dt;
+
+    // Update lifetime
+    p.lifetime -= dt;
+
+    // Write back
+    particles[id] = p;
+}

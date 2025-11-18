@@ -1,0 +1,45 @@
+#version 430 core
+
+// Gaussian blur compute shader (separable - horizontal OR vertical pass)
+layout(local_size_x = 8, local_size_y = 8) in;
+
+// Input/Output textures
+layout(rgba16f, binding = 0) uniform readonly image2D input_map;
+layout(rgba16f, binding = 1) uniform writeonly image2D output_map;
+
+// Uniforms
+uniform bool horizontal;  // true=horizontal pass, false=vertical pass
+uniform float blur_radius;  // Blur kernel radius
+
+// Gaussian kernel weights (5-tap)
+const float weights[5] = float[](0.227027, 0.1945946, 0.1216216, 0.054054, 0.016216);
+
+void main() {
+    ivec2 pixel = ivec2(gl_GlobalInvocationID.xy);
+    ivec2 map_size = imageSize(input_map);
+
+    // Bounds check
+    if (pixel.x >= map_size.x || pixel.y >= map_size.y) {
+        return;
+    }
+
+    vec4 result = imageLoad(input_map, pixel) * weights[0];
+
+    if (horizontal) {
+        // Horizontal blur
+        for (int i = 1; i < 5; i++) {
+            ivec2 offset = ivec2(i, 0);
+            result += imageLoad(input_map, pixel + offset) * weights[i];
+            result += imageLoad(input_map, pixel - offset) * weights[i];
+        }
+    } else {
+        // Vertical blur
+        for (int i = 1; i < 5; i++) {
+            ivec2 offset = ivec2(0, i);
+            result += imageLoad(input_map, pixel + offset) * weights[i];
+            result += imageLoad(input_map, pixel - offset) * weights[i];
+        }
+    }
+
+    imageStore(output_map, pixel, result);
+}
