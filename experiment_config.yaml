@@ -1,0 +1,303 @@
+# MICROLIFE Experiment Configuration File
+# =========================================
+#
+# This YAML file defines parameters for reproducible experiments.
+# Perfect for PhD research, publications, and systematic studies.
+#
+# Usage:
+#   ./MICROLIFE_ULTIMATE --config experiment_config.yaml
+#
+# For batch experiments:
+#   python batch_runner.py --config experiment_config.yaml --replicates 100
+
+# ============================================================================
+# EXPERIMENT METADATA
+# ============================================================================
+experiment:
+  name: "biodiversity_stability_study"
+  description: "Testing relationship between species diversity and ecosystem stability"
+  researcher: "PhD Candidate Name"
+  date: "2025-11-18"
+  version: "1.0"
+  notes: "This is the baseline configuration for the biodiversity-stability hypothesis"
+
+# ============================================================================
+# RANDOM SEED (for reproducibility)
+# ============================================================================
+random_seed: 42
+# Set to -1 for random seed (non-reproducible)
+# Same seed = identical results every time
+
+# ============================================================================
+# SIMULATION PARAMETERS
+# ============================================================================
+simulation:
+  duration: 10000           # Total frames to simulate
+  target_fps: 120           # Target FPS (for real-time)
+  headless: false           # true = no visualization (faster batch runs)
+  export_interval: 100      # Export data every N frames
+
+# ============================================================================
+# ENVIRONMENT SETTINGS
+# ============================================================================
+environment:
+  type: "lake"              # Options: lake, reef, forest, volcanic, arctic, immune
+
+  # Custom environment parameters (override defaults)
+  temperature: 20.0         # Degrees Celsius
+  light_level: 0.7          # 0.0 - 1.0
+  toxicity: 0.1             # 0.0 - 1.0
+  current_strength: 0.3     # 0.0 - 1.0
+  current_angle: 0.0        # Radians (0 = right, π/2 = up)
+
+  # Dynamic environment (optional)
+  temperature_fluctuation: 0.0  # ± variation per 1000 frames
+  seasonal_cycle: false         # Enable seasonal light changes
+
+# ============================================================================
+# INITIAL POPULATION
+# ============================================================================
+initial_population:
+  algae: 20                 # Number of algae to spawn
+  predator: 5               # Number of predators
+  scavenger: 5              # Number of scavengers
+
+  # For CINEMATIC version (12 species):
+  parasite: 0
+  symbiotic: 0
+  colony: 0
+  toxic: 0
+  giant: 0
+  speed_demon: 0
+  tank: 0
+  vampire: 0
+  apex: 0
+
+  # Spatial distribution
+  distribution: "random"    # Options: random, clustered, uniform
+  spawn_region: "full"      # Options: full, center, edges
+
+# ============================================================================
+# ORGANISM PARAMETERS
+# ============================================================================
+organism_parameters:
+
+  # Energy & Metabolism
+  base_metabolism: 0.05     # Energy consumed per frame
+  max_energy_default: 100.0 # Default maximum energy
+  initial_energy_fraction: 0.5  # Start with 50% energy
+
+  # Reproduction
+  reproduction:
+    enabled: true
+    min_energy_fraction: 0.7    # Need 70% energy to reproduce
+    min_age: 100                # Minimum age to reproduce
+    reproduction_chance: 0.01   # 1% chance per frame (if eligible)
+    energy_cost_fraction: 0.3   # Parent loses 30% energy
+
+  # Evolution & Mutation
+  evolution:
+    enabled: true
+    evolution_age_threshold: 500    # Evolve every 500 age units
+    evolution_bonus: 0.05           # 5% improvement per evolution
+
+  mutation:
+    enabled: true
+    efficiency_mutation: 0.10       # ±10% efficiency variation
+    speed_mutation: 0.20            # ±20% speed variation
+    aggression_mutation: 0.15       # ±15% aggression variation (predators)
+    max_energy_mutation: 0.10       # ±10% max energy variation
+
+  # Species-specific parameters
+  algae:
+    base_speed: 0.5
+    photosynthesis_efficiency: 0.8
+    reproduction_rate_multiplier: 1.5  # Algae reproduce faster
+
+  predator:
+    base_speed: 2.5
+    hunting_efficiency: 0.6
+    energy_per_kill: 40.0
+    aggression: 0.8
+
+  scavenger:
+    base_speed: 1.5
+    scavenging_efficiency: 0.85
+    energy_per_food: 20.0
+
+# ============================================================================
+# INTERACTION RULES
+# ============================================================================
+interactions:
+
+  # Predation
+  predation:
+    enabled: true
+    kill_distance: 5.0        # Pixels - how close to kill
+    chase_distance: 100.0     # Pixels - how far predators sense prey
+    energy_transfer: 0.6      # 60% of prey energy transferred
+
+  # Parasitism
+  parasitism:
+    enabled: true             # Only for CINEMATIC version
+    attach_distance: 3.0
+    energy_drain_rate: 0.5    # Energy per frame
+    max_parasites_per_host: 3
+
+  # Symbiosis
+  symbiosis:
+    enabled: true             # Only for CINEMATIC version
+    benefit_distance: 10.0
+    energy_bonus: 0.2         # +20% efficiency when near partner
+
+  # Food particles
+  food_particles:
+    enabled: true
+    spawn_on_death: true
+    energy_per_particle: 15.0
+    lifetime: 1000            # Frames before decay
+    decay_rate: 0.95          # Energy reduction per frame
+
+# ============================================================================
+# DATA EXPORT
+# ============================================================================
+export:
+  enabled: true
+  format: "csv"               # Options: csv, json, both
+
+  # Output files
+  output_directory: "./experiment_data"
+  time_series_file: "population_timeseries.csv"
+  individual_data_file: "organism_records.json"
+  final_snapshot_file: "final_state.json"
+
+  # What to export
+  export_population: true     # Population counts over time
+  export_energy: true         # Mean/total energy
+  export_events: true         # Births, deaths, evolutions
+  export_individuals: true    # Detailed organism records
+  export_network: false       # Interaction network (graph)
+
+  # Statistical summaries
+  compute_statistics: true
+  statistics_interval: 1000   # Compute stats every N frames
+
+# ============================================================================
+# VISUALIZATION (if not headless)
+# ============================================================================
+visualization:
+  window_width: 1600
+  window_height: 900
+
+  # Visual effects
+  show_trails: true
+  trail_length: 20
+  show_energy_halos: true
+  show_connections: false     # Neural network connections
+
+  # UI panels
+  show_stats_panel: true
+  show_event_feed: true       # CINEMATIC version only
+  show_graphs: true
+  graph_history: 300          # Frames to show in graphs
+
+  # Particle effects
+  particles:
+    evolution_particles: 25
+    mutation_particles: 15
+    death_particles: 10
+    birth_particles: 5
+
+# ============================================================================
+# HYPOTHESIS TESTING
+# ============================================================================
+hypothesis:
+  # This section is for documenting your research hypothesis
+  # (not used by simulation, but good for reproducibility)
+
+  research_question: |
+    Does increased species diversity lead to greater ecosystem stability?
+
+  hypothesis: |
+    H1: Ecosystems with higher species richness (4+ species) will exhibit
+    lower population variance (CV < 0.3) compared to low-diversity systems
+    (1-2 species, CV > 0.5).
+
+  predictions:
+    - "Higher diversity → lower coefficient of variation"
+    - "More species → faster recovery from perturbations"
+    - "Functional redundancy → stability"
+
+  statistical_test: "One-way ANOVA with species richness as factor"
+  significance_level: 0.05
+
+  experimental_groups:
+    - name: "Low diversity"
+      species_count: 2
+      replicates: 50
+
+    - name: "Medium diversity"
+      species_count: 5
+      replicates: 50
+
+    - name: "High diversity"
+      species_count: 10
+      replicates: 50
+
+# ============================================================================
+# PERFORMANCE OPTIMIZATION
+# ============================================================================
+performance:
+  spatial_partitioning: true    # Use grid for collision detection
+  grid_cell_size: 50            # Pixels per grid cell
+  max_organisms: 500            # Prevent lag
+  particle_limit: 1000          # Max particles on screen
+
+# ============================================================================
+# VALIDATION PARAMETERS
+# ============================================================================
+validation:
+  # Expected ranges (for sanity checking)
+  expected_population_range: [10, 300]
+  expected_mean_energy: [30, 80]
+  max_acceptable_extinction_rate: 0.3  # Warn if >30% runs go extinct
+
+  # Warnings
+  warn_if_extinct: true
+  warn_if_population_explodes: true
+  population_explosion_threshold: 1000
+
+# ============================================================================
+# NOTES FOR PHD THESIS
+# ============================================================================
+thesis_notes: |
+  Chapter 3: Biodiversity-Stability Experiments
+
+  This configuration represents the baseline treatment for testing the
+  biodiversity-stability hypothesis. Key parameters:
+
+  - Lake environment (moderate, stable)
+  - Varying species richness (2, 5, 10 species)
+  - 50 replicates per treatment
+  - Duration: 10,000 frames (~5 minutes real-time)
+  - Controlled random seed for reproducibility
+
+  Analysis Plan:
+  1. Calculate population CV for each replicate
+  2. One-way ANOVA: CV ~ Species_Richness
+  3. Post-hoc Tukey HSD if significant
+  4. Plot: Boxplot of CV by richness group
+
+  Expected Results:
+  - Negative correlation between richness and CV
+  - Significant F-test (p < 0.05)
+  - Effect size: η² > 0.14 (large effect)
+
+  References:
+  - McCann (2000) - Diversity-stability debate
+  - Tilman et al. (2006) - Biodiversity experiments
+  - Ives & Carpenter (2007) - Stability metrics
+
+# ============================================================================
+# END OF CONFIGURATION
+# ============================================================================
