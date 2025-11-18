@@ -1,0 +1,32 @@
+# Makefile for MICROLIFE_ACADEMIC
+
+CXX = g++
+CXXFLAGS = -std=c++17 -O3 -march=native -flto -Wall -Wextra
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
+
+TARGET = MICROLIFE_ACADEMIC
+SOURCE = MICROLIFE_ACADEMIC.cpp
+
+.PHONY: all clean test
+
+all: $(TARGET)
+
+$(TARGET): $(SOURCE)
+	@echo "Compiling $(TARGET)..."
+	$(CXX) $(CXXFLAGS) $(SOURCE) $(LIBS) -o $(TARGET)
+	@echo "✓ Build complete: ./$(TARGET)"
+	@echo ""
+	@echo "Usage:"
+	@echo "  ./$(TARGET)                              # Interactive mode"
+	@echo "  ./$(TARGET) --config experiment_simple.cfg  # With config"
+	@echo "  ./$(TARGET) --headless --duration 5000   # Batch mode"
+	@echo ""
+
+test: $(TARGET)
+	@echo "Running test simulation (5 seconds)..."
+	@mkdir -p experiment_data
+	./$(TARGET) --headless --duration 300 --seed 42
+
+clean:
+	rm -f $(TARGET)
+	@echo "Cleaned."
