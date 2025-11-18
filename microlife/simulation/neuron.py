@@ -449,14 +449,15 @@ class Neuron:
         Execute apoptotic program
         Clean cell death without inflammation
         """
-        # Gradual energy depletion
-        self.energy -= 10.0 * dt
+        # Rapid energy depletion during apoptosis (caspase cascade is ATP-consuming)
+        self.energy -= 20.0 * dt  # Faster energy depletion
 
         # Membrane potential depolarizes
         self.membrane_potential += 5.0 * dt
 
         # After apoptotic cascade, cell is removed
-        if self.energy <= 0:
+        # If energy is critically low or cell has been apoptotic for too long, complete death
+        if self.energy <= 0.5:  # More lenient threshold
             self.alive = False
             print(f"Neuron {self.id}: Apoptosis complete, cell removed")
 
