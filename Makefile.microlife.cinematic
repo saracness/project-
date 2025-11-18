@@ -1,0 +1,46 @@
+# Makefile for MICROLIFE CINEMATIC
+
+CXX = g++
+CXXFLAGS = -std=c++17 -O3 -march=native -flto -Wall -Wextra
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
+
+TARGET = MICROLIFE_CINEMATIC
+SOURCE = MICROLIFE_ULTIMATE_CINEMATIC.cpp
+
+.PHONY: all clean run
+
+all: $(TARGET)
+
+$(TARGET): $(SOURCE)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║         Compiling MICROLIFE CINEMATIC EDITION                      ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	@echo "🎬 Building CINEMATIC features:"
+	@echo "  • 12 Unique Organism Types"
+	@echo "  • Live Event Feed System"
+	@echo "  • Film-Quality Visual Effects"
+	@echo "  • Mutation & Evolution Tracking"
+	@echo "  • Birth/Death Notifications"
+	@echo "  • Particle Explosions"
+	@echo ""
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCE) $(LDFLAGS)
+	@echo ""
+	@echo "✓ Build successful!"
+	@echo ""
+	@echo "🎬 CINEMATIC EDITION READY!"
+	@echo ""
+	@echo "Run with: ./$(TARGET)"
+	@echo ""
+
+run: $(TARGET)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║               Launching CINEMATIC EDITION                          ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	./$(TARGET)
+
+clean:
+	@echo "Cleaning..."
+	rm -f $(TARGET)
+	@echo "✓ Clean complete"

@@ -1,0 +1,53 @@
+# Makefile for ONLY_FOR_NATURE
+#
+# Usage:
+#   make -f Makefile.nature        # Build
+#   make -f Makefile.nature run    # Build and run
+#   make -f Makefile.nature clean  # Clean
+
+CXX = g++
+CXXFLAGS = -std=c++17 -O3 -march=native -flto -Wall -Wextra
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
+
+TARGET = ONLY_FOR_NATURE
+SOURCE = ONLY_FOR_NATURE.cpp
+
+.PHONY: all clean run install-deps
+
+all: $(TARGET)
+
+$(TARGET): $(SOURCE)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║                  Compiling ONLY FOR NATURE                         ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCE) $(LDFLAGS)
+	@echo ""
+	@echo "✓ Build successful!"
+	@echo ""
+	@echo "Run with: ./$(TARGET)"
+	@echo "Or:       make -f Makefile.nature run"
+	@echo ""
+
+run: $(TARGET)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║                     Launching Simulation                           ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	./$(TARGET)
+
+clean:
+	@echo "Cleaning..."
+	rm -f $(TARGET)
+	@echo "✓ Clean complete"
+
+install-deps:
+	@echo "Installing SFML dependencies..."
+	@echo "For Ubuntu/Debian:"
+	@echo "  sudo apt-get install libsfml-dev"
+	@echo ""
+	@echo "For Arch Linux:"
+	@echo "  sudo pacman -S sfml"
+	@echo ""
+	@echo "For macOS:"
+	@echo "  brew install sfml"

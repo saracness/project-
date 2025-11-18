@@ -361,3 +361,35 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Python Virtual Environments
+microlife_env/
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ML Models and Data
+*.h5
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.onnx
+
+# Simulation Data Logs
+microlife/data/logs/*.csv
+microlife/data/logs/*.json
+!microlife/data/logs/.gitkeep
+
+# Generated visualizations
+*.png
+*.jpg
+*.gif
+*.mp4
+!docs/*.png

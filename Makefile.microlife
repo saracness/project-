@@ -1,0 +1,49 @@
+# Makefile for MICROLIFE_ULTIMATE
+#
+# Usage:
+#   make -f Makefile.microlife        # Build
+#   make -f Makefile.microlife run    # Build and run
+#   make -f Makefile.microlife clean  # Clean
+
+CXX = g++
+CXXFLAGS = -std=c++17 -O3 -march=native -flto -Wall -Wextra
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -pthread
+
+TARGET = MICROLIFE_ULTIMATE
+SOURCE = MICROLIFE_ULTIMATE.cpp
+
+.PHONY: all clean run
+
+all: $(TARGET)
+
+$(TARGET): $(SOURCE)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║              Compiling MICROLIFE ULTIMATE                          ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	@echo "Building micro-organism ecosystem simulation with:"
+	@echo "  • 3 Organism types (Algae, Predator, Scavenger)"
+	@echo "  • 6 Different environments"
+	@echo "  • Evolution & Reproduction"
+	@echo "  • Real-time population graphs"
+	@echo "  • 100+ FPS performance"
+	@echo ""
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCE) $(LDFLAGS)
+	@echo ""
+	@echo "✓ Build successful!"
+	@echo ""
+	@echo "Run with: ./$(TARGET)"
+	@echo "Or:       make -f Makefile.microlife run"
+	@echo ""
+
+run: $(TARGET)
+	@echo "╔═══════════════════════════════════════════════════════════════════╗"
+	@echo "║                  Launching MICROLIFE ULTIMATE                      ║"
+	@echo "╚═══════════════════════════════════════════════════════════════════╝"
+	@echo ""
+	./$(TARGET)
+
+clean:
+	@echo "Cleaning..."
+	rm -f $(TARGET)
+	@echo "✓ Clean complete"
