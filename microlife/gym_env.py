@@ -273,6 +273,9 @@ class MicrolifeEnv:
         """
         Convert numpy observation to the dict format expected by
         Brain.decide_action() / Brain.learn().
+
+        All 8 observation dimensions are preserved so that Brain.get_state_vector()
+        can reconstruct the same 8-dim vector without information loss.
         """
         return {
             "energy":                  float(obs[0]) * 200.0,
@@ -285,4 +288,5 @@ class MicrolifeEnv:
             "near_obstacle":           bool(obs[5] > 0.5),
             "age":                     int(float(obs[6]) * 2000),
             "speed":                   getattr(self._organism, "speed", 1.0),
+            "food_count":              float(obs[7]) * 50.0,  # dim 8 — matches brain_base
         }
