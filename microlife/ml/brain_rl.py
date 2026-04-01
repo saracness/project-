@@ -219,15 +219,19 @@ class DQNBrain(Brain):
             # Hidden layer
             h = np.maximum(0, np.dot(state_vec, self.w1) + self.b1)
 
-            # Output error
-            output_error = q_values - (np.dot(h, self.w2) + self.b2)
+            # Output error — clip to prevent gradient explosion
+            output_error = np.clip(
+                q_values - (np.dot(h, self.w2) + self.b2), -5.0, 5.0
+            )
 
-            # Update weights (simplified)
+            # Update weights
             self.w2 += self.lr * np.outer(h, output_error)
             self.b2 += self.lr * output_error
 
-            # Hidden error
-            hidden_error = np.dot(output_error, self.w2.T) * (h > 0)  # ReLU derivative
+            # Hidden error (ReLU derivative) — clip as well
+            hidden_error = np.clip(
+                np.dot(output_error, self.w2.T) * (h > 0), -5.0, 5.0
+            )
 
             # Update first layer
             self.w1 += self.lr * np.outer(state_vec, hidden_error)
@@ -279,14 +283,17 @@ class DoubleDQNBrain(DQNBrain):
 
             q_values[action_idx] = target
 
-            # Backprop (same as DQN)
+            # Backprop (same as DQN) — clip gradients for numerical stability
             h = np.maximum(0, np.dot(state_vec, self.w1) + self.b1)
-            output_error = q_values - (np.dot(h, self.w2) + self.b2)
-
+            output_error = np.clip(
+                q_values - (np.dot(h, self.w2) + self.b2), -5.0, 5.0
+            )
             self.w2 += self.lr * np.outer(h, output_error)
             self.b2 += self.lr * output_error
 
-            hidden_error = np.dot(output_error, self.w2.T) * (h > 0)
+            hidden_error = np.clip(
+                np.dot(output_error, self.w2.T) * (h > 0), -5.0, 5.0
+            )
             self.w1 += self.lr * np.outer(state_vec, hidden_error)
             self.b1 += self.lr * hidden_error
 
