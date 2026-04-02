@@ -8,9 +8,12 @@
  * - Reward-based learning
  * - Real-time SFML visualization
  * - Multi-threading ready
+ * - Real AI model comparison panel (reads from ai_models_runner.py)
  *
  * Build: g++ -std=c++17 neuron_learning_fast.cpp -lsfml-graphics -lsfml-window -lsfml-system -pthread -O3
- * Run:   ./neuron_learning_fast --neurons 100 --task xor --fps 60
+ * Run (with real AI panel):
+ *   python ai_models_runner.py &
+ *   ./neuron_learning_fast --neurons 100 --task xor --fps 60
  */
 
 #include <SFML/Graphics.hpp>
@@ -23,6 +26,8 @@
 #include <memory>
 #include <string>
 #include <map>
+#include <fstream>
+#include <sstream>
 
 // Random number generator
 std::random_device rd;
@@ -238,6 +243,186 @@ public:
         border.setOutlineThickness(1);
         window.draw(border);
     }
+
+    // Draw label at top-left of the graph box
+    void draw_label(sf::RenderWindow& window, sf::FloatRect bounds, sf::Font& font,
+                    const std::string& extra = "") {
+        sf::Text text;
+        text.setFont(font);
+        text.setString(label + (extra.empty() ? "" : " " + extra));
+        text.setCharacterSize(11);
+        text.setFillColor(color);
+        text.setPosition(bounds.left + 3, bounds.top + 2);
+        window.draw(text);
+    }
+};
+
+// ─── Real AI Models (read from Python runner) ────────────────────────────────
+
+struct RealModelState {
+    std::string name;
+    float accuracy  = 0.0f;
+    float avg_reward = 0.0f;
+    int   episodes  = 0;
+    Graph acc_graph;
+    Graph rwd_graph;
+
+    static const sf::Color MODEL_COLORS[4];
+
+    RealModelState(const std::string& n, sf::Color col)
+        : name(n),
+          acc_graph("Acc", col, 150),
+          rwd_graph("Rwd", sf::Color(col.r / 2, col.g / 2, col.b / 2 + 80, 255), 150) {}
+};
+
+const sf::Color RealModelState::MODEL_COLORS[4] = {
+    sf::Color(255, 200,  50),   // Q-Learning  – yellow
+    sf::Color( 50, 220, 255),   // Neural-Net  – cyan
+    sf::Color(200,  80, 255),   // Genetic-Alg – purple
+    sf::Color( 80, 255, 130),   // DQN-Simple  – green
+};
+
+class RealModelPanel {
+public:
+    static constexpr const char* STATE_FILE = "/tmp/real_ai_state.txt";
+    static constexpr int COLOR_COUNT = 4;
+
+    std::vector<RealModelState> models;
+    int update_counter = 0;
+    bool data_available = false;
+
+    RealModelPanel() {
+        // Pre-allocate with expected names & colors (will be updated from file)
+        const char* names[] = {"Q-Learning", "Neural-Net", "Genetic-Alg", "DQN-Simple"};
+        for (int i = 0; i < COLOR_COUNT; ++i)
+            models.emplace_back(names[i], RealModelState::MODEL_COLORS[i]);
+    }
+
+    void refresh() {
+        std::ifstream f(STATE_FILE);
+        if (!f.is_open()) { data_available = false; return; }
+        data_available = true;
+
+        std::string line;
+        int idx = 0;
+        while (std::getline(f, line) && idx < (int)models.size()) {
+            if (line.empty()) continue;
+            std::istringstream ss(line);
+            std::string tok;
+            std::vector<std::string> parts;
+            while (std::getline(ss, tok, ',')) parts.push_back(tok);
+            if (parts.size() < 4) continue;
+
+            models[idx].name       = parts[0];
+            models[idx].accuracy   = std::stof(parts[1]);
+            models[idx].avg_reward = std::stof(parts[2]);
+            models[idx].episodes   = std::stoi(parts[3]);
+            models[idx].acc_graph.add(models[idx].accuracy);
+            models[idx].rwd_graph.add(std::max(0.0f, models[idx].avg_reward));
+            ++idx;
+        }
+    }
+
+    // Call every N frames
+    void maybe_refresh(int frame, int every = 18) {
+        if (frame % every == 0) refresh();
+    }
+
+    void draw(sf::RenderWindow& window, sf::Font& font, float panel_x, float panel_y,
+              float panel_w, float panel_h) {
+        // Panel background
+        sf::RectangleShape bg(sf::Vector2f(panel_w, panel_h));
+        bg.setPosition(panel_x, panel_y);
+        bg.setFillColor(sf::Color(15, 15, 25));
+        bg.setOutlineColor(sf::Color(60, 60, 90));
+        bg.setOutlineThickness(1);
+        window.draw(bg);
+
+        // Title
+        sf::Text title;
+        title.setFont(font);
+        title.setString(data_available ? "Real AI Models" : "Real AI Models (waiting...)");
+        title.setCharacterSize(13);
+        title.setFillColor(sf::Color(200, 200, 255));
+        title.setStyle(sf::Text::Bold);
+        title.setPosition(panel_x + 6, panel_y + 4);
+        window.draw(title);
+
+        if (!data_available) {
+            sf::Text hint;
+            hint.setFont(font);
+            hint.setString("Run: python ai_models_runner.py");
+            hint.setCharacterSize(10);
+            hint.setFillColor(sf::Color(140, 140, 160));
+            hint.setPosition(panel_x + 6, panel_y + 24);
+            window.draw(hint);
+            return;
+        }
+
+        // Each model: one row with acc-graph + rwd-graph + text stats
+        float row_h   = (panel_h - 30) / (float)models.size();
+        float g_w     = (panel_w - 20) * 0.45f;
+        float g_h     = row_h - 18;
+        float text_x  = panel_x + 12 + g_w * 2 + 8;
+
+        for (int i = 0; i < (int)models.size(); ++i) {
+            auto& m = models[i];
+            float ry = panel_y + 26 + i * row_h;
+
+            // Model name
+            sf::Text nm;
+            nm.setFont(font);
+            nm.setString(m.name);
+            nm.setCharacterSize(11);
+            nm.setFillColor(RealModelState::MODEL_COLORS[i % COLOR_COUNT]);
+            nm.setPosition(panel_x + 6, ry);
+            window.draw(nm);
+
+            // Accuracy bar (background)
+            float bar_w = panel_w - 14;
+            float bar_x = panel_x + 7;
+            float bar_y = ry + 13;
+            float bar_h = 6.0f;
+
+            sf::RectangleShape bar_bg(sf::Vector2f(bar_w, bar_h));
+            bar_bg.setPosition(bar_x, bar_y);
+            bar_bg.setFillColor(sf::Color(40, 40, 55));
+            window.draw(bar_bg);
+
+            sf::RectangleShape bar_fill(sf::Vector2f(bar_w * m.accuracy, bar_h));
+            bar_fill.setPosition(bar_x, bar_y);
+            auto col = RealModelState::MODEL_COLORS[i % COLOR_COUNT];
+            col.a = 200;
+            bar_fill.setFillColor(col);
+            window.draw(bar_fill);
+
+            // Accuracy graph
+            float gx = panel_x + 6;
+            float gy = ry + 22;
+            m.acc_graph.draw(window, sf::FloatRect(gx, gy, g_w, g_h));
+
+            // Reward graph (next to it)
+            m.rwd_graph.draw(window, sf::FloatRect(gx + g_w + 4, gy, g_w, g_h));
+
+            // Stats text
+            char buf[64];
+            snprintf(buf, sizeof(buf), "acc=%.0f%%\nrwd=%+.2f\nep=%d",
+                     m.accuracy * 100.0f, m.avg_reward, m.episodes);
+            float ty = gy;
+            std::istringstream lines(buf);
+            std::string ln;
+            while (std::getline(lines, ln)) {
+                sf::Text st;
+                st.setFont(font);
+                st.setString(ln);
+                st.setCharacterSize(9);
+                st.setFillColor(sf::Color(190, 190, 190));
+                st.setPosition(text_x, ty);
+                window.draw(st);
+                ty += 11;
+            }
+        }
+    }
 };
 
 // Neural Network
@@ -267,6 +452,11 @@ private:
     float time;
     int frame_count;
 
+    // Real AI model panel
+    RealModelPanel real_panel;
+    sf::Font font;
+    bool font_loaded;
+
 public:
     NeuralNetwork(float width, float height, float depth)
         : env_width(width), env_height(height), env_depth(depth),
@@ -274,8 +464,23 @@ public:
           accuracy_graph("Accuracy", sf::Color::Blue),
           reward_graph("Reward", sf::Color::Green),
           synapse_graph("Synapses", sf::Color::Red),
-          activity_graph("Activity", sf::Color::Magenta)
+          activity_graph("Activity", sf::Color::Magenta),
+          font_loaded(false)
     {
+        // Try to load a system font
+        const char* font_paths[] = {
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+            "/usr/share/fonts/TTF/DejaVuSans.ttf",
+            "/System/Library/Fonts/Helvetica.ttc",
+            nullptr
+        };
+        for (int i = 0; font_paths[i]; ++i) {
+            if (font.loadFromFile(font_paths[i])) {
+                font_loaded = true;
+                break;
+            }
+        }
         setup_xor_task();
     }
 
@@ -352,12 +557,23 @@ public:
         time += dt;
         frame_count++;
 
-        // Update all neurons
+        // Update all neurons (membrane dynamics, trace decay, firing)
         for (auto& neuron : neurons) {
             neuron->update(dt);
-
-            // Add energy (simulate metabolism)
             neuron->energy = std::min(200.0f, neuron->energy + 0.5f * dt);
+        }
+
+        // Sinaptik iletim: ateşlenen nöronların sinyalini bağlı nöronlara ilet.
+        // (post_trace = 1 when a neuron fired this frame — used as spike indicator)
+        for (auto& synapse : synapses) {
+            if (synapse->pre_id < neurons.size() && synapse->post_id < neurons.size()) {
+                float spike = neurons[synapse->pre_id]->post_trace;
+                if (spike > 0.1f) {
+                    // Drive post-synaptic membrane proportional to weight x spike
+                    neurons[synapse->post_id]->membrane_potential +=
+                        synapse->weight * spike * 12.0f;
+                }
+            }
         }
 
         // Dynamic synaptogenesis (every 10 frames)
@@ -389,6 +605,9 @@ public:
             synapse_graph.add(synapses.size() / 100.0f);
             activity_graph.add(avg_firing);
         }
+
+        // Refresh real AI model state from file (every 18 frames)
+        real_panel.maybe_refresh(frame_count);
     }
 
     void attempt_synapse_formation() {
@@ -510,17 +729,27 @@ public:
             }
         }
 
-        // Draw graphs
-        float graph_x = 850;
+        // ── Biological simulation graphs (middle column 850-1200) ──
+        float graph_x = 855;
         float graph_y = 50;
         float graph_w = 330;
         float graph_h = 140;
-        float spacing = 160;
+        float spacing = 165;
 
-        accuracy_graph.draw(window, sf::FloatRect(graph_x, graph_y, graph_w, graph_h));
-        reward_graph.draw(window, sf::FloatRect(graph_x, graph_y + spacing, graph_w, graph_h));
-        synapse_graph.draw(window, sf::FloatRect(graph_x, graph_y + spacing * 2, graph_w, graph_h));
-        activity_graph.draw(window, sf::FloatRect(graph_x, graph_y + spacing * 3, graph_w, graph_h));
+        auto draw_graph_labeled = [&](Graph& g, float gx, float gy, float gw, float gh) {
+            g.draw(window, sf::FloatRect(gx, gy, gw, gh));
+            if (font_loaded)
+                g.draw_label(window, sf::FloatRect(gx, gy, gw, gh), font);
+        };
+
+        draw_graph_labeled(accuracy_graph, graph_x, graph_y,                graph_w, graph_h);
+        draw_graph_labeled(reward_graph,   graph_x, graph_y + spacing,      graph_w, graph_h);
+        draw_graph_labeled(synapse_graph,  graph_x, graph_y + spacing * 2,  graph_w, graph_h);
+        draw_graph_labeled(activity_graph, graph_x, graph_y + spacing * 3,  graph_w, graph_h);
+
+        // ── Real AI Models panel (right column 1210-1590) ──
+        if (font_loaded)
+            real_panel.draw(window, font, 1210, 10, 380, 780);
 
         window.display();
     }
@@ -566,15 +795,17 @@ int main(int argc, char** argv) {
         }
     }
 
-    std::cout << "🧠 Fast Neuron Learning Simulation\n";
+    std::cout << "Brain Neuron Learning Simulation\n";
     std::cout << "====================================\n";
     std::cout << "Neurons: " << num_neurons << "\n";
     std::cout << "Target FPS: " << target_fps << "\n";
     std::cout << "Task: " << task << "\n";
+    std::cout << "Real AI panel: run 'python ai_models_runner.py' for live model comparison\n";
     std::cout << "====================================\n";
 
-    // Create window
-    sf::RenderWindow window(sf::VideoMode(1200, 800), "Neuron Learning - Fast C++ Simulation");
+    // Create window (wider to fit Real AI Models panel on the right)
+    sf::RenderWindow window(sf::VideoMode(1600, 800),
+                            "Neuron Learning + Real AI Models - Fast C++ Simulation");
     window.setFramerateLimit(target_fps);
 
     // Create network

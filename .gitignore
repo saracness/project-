@@ -393,3 +393,18 @@ microlife/data/logs/*.json
 *.gif
 *.mp4
 !docs/*.png
+
+# Compiled C++ binaries (build from source with: make -f cpp/Makefile.<target>)
+MICROLIFE_ULTIMATE
+MICROLIFE_CINEMATIC
+ONLY_FOR_NATURE
+ONLY_FOR_NATURE_ULTIMATE
+cpp_visualization/build/
+*.o
+*.a
+
+# Training outputs
+outputs/
+runs/
+checkpoints/
+*.db

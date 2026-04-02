@@ -130,7 +130,7 @@ def create_ai_organisms(environment):
 
     # 2. DQN
     for i in range(2):
-        brain = DQNBrain(state_size=7, hidden_size=24)
+        brain = DQNBrain(state_size=8, hidden_size=24)
         org = AIOrganismWithBrain(positions[1][0] + i*20, positions[1][1] + i*20, brain, energy=120)
         organisms.append(org)
         brain_colors[id(org)] = '#4ECDC4'  # Cyan
@@ -138,7 +138,7 @@ def create_ai_organisms(environment):
 
     # 3. Double DQN
     for i in range(2):
-        brain = DoubleDQNBrain(state_size=7, hidden_size=24)
+        brain = DoubleDQNBrain(state_size=8, hidden_size=24)
         org = AIOrganismWithBrain(positions[2][0] + i*20, positions[2][1] + i*20, brain, energy=120)
         organisms.append(org)
         brain_colors[id(org)] = '#95E1D3'  # Light Green

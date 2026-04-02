@@ -54,7 +54,7 @@ for i in range(3):
     org = Organism(x=100 + i*30, y=400, energy=120, morphology=morph)
 
     # ATTACH BRAIN
-    brain = DQNBrain(state_size=7, hidden_size=24)
+    brain = DQNBrain(state_size=8, hidden_size=24)
     org.brain = brain
 
     env.add_organism(org)

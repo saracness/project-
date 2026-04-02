@@ -41,9 +41,9 @@ def spawn_species_with_ai(species_name, ai_type='No AI'):
         if ai_type == 'Q-Learning':
             brain = QLearningBrain(learning_rate=0.1, epsilon=0.3)
         elif ai_type == 'DQN':
-            brain = DQNBrain(state_size=7, hidden_size=24)
+            brain = DQNBrain(state_size=8, hidden_size=24)
         elif ai_type == 'DoubleDQN':
-            brain = DoubleDQNBrain(state_size=7, hidden_size=24)
+            brain = DoubleDQNBrain(state_size=8, hidden_size=24)
 
         if brain:
             organism.brain = brain

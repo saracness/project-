@@ -110,16 +110,17 @@ class Brain(ABC):
         Convert state dict to numpy vector for neural networks.
 
         Returns:
-            np.ndarray: State as vector
+            np.ndarray: State as 8-element vector (matches MicrolifeEnv obs)
         """
         return np.array([
-            state.get('energy', 0) / 200.0,  # Normalize
+            state.get('energy', 0) / 200.0,
             min(state.get('nearest_food_distance', 500) / 500.0, 1.0),
             state.get('nearest_food_angle', 0) / (2 * np.pi),
             1.0 if state.get('in_temperature_zone', False) else 0.0,
             1.0 if state.get('near_obstacle', False) else 0.0,
             min(state.get('age', 0) / 1000.0, 1.0),
-            state.get('speed', 1.0) / 2.0
+            state.get('speed', 1.0) / 2.0,
+            min(state.get('food_count', 0) / 50.0, 1.0),  # dim 8
         ])
 
     def save_model(self, filepath):

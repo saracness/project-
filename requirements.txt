@@ -12,13 +12,13 @@ scikit-learn>=1.0.0
 # tensorflow>=2.8.0  # Uncomment for TensorFlow
 # torch>=1.10.0      # Uncomment for PyTorch
 
-# Visualization
-matplotlib>=3.4.0
+# Core visualization (seaborn optional)
 seaborn>=0.11.0
 
-# Optional: Interactive visualization
-# pygame>=2.1.0
-# plotly>=5.0.0
+# Visualization (required)
+pygame>=2.1.0
+matplotlib>=3.4.0
+pandas>=1.3.0
 
 # Optional: Reinforcement Learning
 # stable-baselines3>=1.5.0
