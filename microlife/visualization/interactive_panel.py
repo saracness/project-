@@ -211,11 +211,11 @@ class ControlPanel:
 
             elif ai_type == 'DQN':
                 from ..ml.brain_rl import DQNBrain
-                return DQNBrain(state_size=7, hidden_size=24)
+                return DQNBrain(state_size=8, hidden_size=24)
 
             elif ai_type == 'DoubleDQN':
                 from ..ml.brain_rl import DoubleDQNBrain
-                return DoubleDQNBrain(state_size=7, hidden_size=24)
+                return DoubleDQNBrain(state_size=8, hidden_size=24)
 
             elif ai_type == 'CNN':
                 from ..ml.brain_cnn import CNNBrain
