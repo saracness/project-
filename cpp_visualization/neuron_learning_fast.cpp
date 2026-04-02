@@ -557,12 +557,23 @@ public:
         time += dt;
         frame_count++;
 
-        // Update all neurons
+        // Update all neurons (membrane dynamics, trace decay, firing)
         for (auto& neuron : neurons) {
             neuron->update(dt);
-
-            // Add energy (simulate metabolism)
             neuron->energy = std::min(200.0f, neuron->energy + 0.5f * dt);
+        }
+
+        // Sinaptik iletim: ateşlenen nöronların sinyalini bağlı nöronlara ilet.
+        // (post_trace = 1 when a neuron fired this frame — used as spike indicator)
+        for (auto& synapse : synapses) {
+            if (synapse->pre_id < neurons.size() && synapse->post_id < neurons.size()) {
+                float spike = neurons[synapse->pre_id]->post_trace;
+                if (spike > 0.1f) {
+                    // Drive post-synaptic membrane proportional to weight x spike
+                    neurons[synapse->post_id]->membrane_potential +=
+                        synapse->weight * spike * 12.0f;
+                }
+            }
         }
 
         // Dynamic synaptogenesis (every 10 frames)
