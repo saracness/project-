@@ -3,6 +3,48 @@
 A simulation platform for studying emergent behaviors in artificial micro-organisms.
 Combines agent-based modeling with tabular and deep reinforcement learning.
 
+## Quick Start
+
+```bash
+git clone https://github.com/saracness/project-
+cd project-
+python START_SIMULATION.py
+```
+
+That's it. The launcher checks your Python version, installs any missing
+dependencies from `requirements.txt`, runs the simulation, and writes logs
+to `./logs/<timestamp>/`.
+
+```
+logs/2026-04-09_14-30-00/
+    stats.csv      <-- per-step metrics (population, energy, age, food)
+    events.log     <-- notable events (start, milestones, collapse, end)
+```
+
+Optional flags:
+
+```bash
+python START_SIMULATION.py --steps 1000 --organisms 30
+python START_SIMULATION.py --seed 42        # reproducible run
+python START_SIMULATION.py --no-logs        # console only
+```
+
+## Other Entry Points
+
+```bash
+# Compare RL agents vs random/greedy baselines
+python experiments/benchmark_rl_vs_random.py
+
+# Train Q-Learning, save checkpoint, evaluate (epsilon=0)
+python experiments/train_and_evaluate.py
+
+# Neuron plasticity demo (Hebbian learning)
+python demo_neuron_learning.py
+
+# Minimal headless runner (no logging)
+python -m microlife.simulation.run_basic
+```
+
 ## Implementation Status
 
 | Component | Status |
@@ -12,31 +54,13 @@ Combines agent-based modeling with tabular and deep reinforcement learning.
 | Greedy food-seeking behavior | Complete |
 | Tabular Q-Learning brain | Complete |
 | DQN / Double-DQN (numpy, no external RL library required) | Complete |
+| Brain model save / load (pickle / numpy.savez) | Complete |
 | Evolutionary and CNN brains | Complete |
 | Neural tissue model: neuron life-cycle, Hebbian plasticity | Complete |
 | Neurovascular coupling simulation | Complete |
+| File logging (stats.csv + events.log per run) | Complete |
 | Multi-species ecosystem | In progress |
 | GPU-accelerated batch rollouts | Experimental |
-
-## Quick Start
-
-```bash
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-
-# Compare RL agents vs random/greedy baselines
-python experiments/benchmark_rl_vs_random.py
-
-# Neuron plasticity demo
-python demo_neuron_learning.py
-
-# Multi-agent AI battle
-python demo_ai_battle.py
-
-# Headless basic simulation
-python -m microlife.simulation.run_basic
-```
 
 ## Project Structure
 
@@ -52,22 +76,32 @@ microlife/
 │   └── neuron_learning.py     # Synaptic plasticity (LTP/LTD/STDP)
 ├── ml/
 │   ├── brain_base.py          # Abstract Brain interface
+│   ├── brain_random.py        # RandomBrain (uniform random, benchmark baseline)
 │   ├── brain_rl.py            # Q-Learning, DQN, Double-DQN (numpy)
 │   ├── brain_evolutionary.py  # Genetic algorithm brain
 │   └── brain_cnn.py           # CNN-based perception
+└── logger.py                  # SimulationLogger (stats.csv + events.log)
 experiments/
-└── benchmark_rl_vs_random.py  # Reproducible survival comparison
+├── benchmark_rl_vs_random.py  # Reproducible survival comparison (4 conditions)
+└── train_and_evaluate.py      # Train -> checkpoint -> eval pipeline
+logs/                          # Auto-created, gitignored
 ```
 
-## Running the Benchmark
+## Log Format
 
-```bash
-python experiments/benchmark_rl_vs_random.py --trials 10 --steps 2000
+`stats.csv` columns:
+```
+timestep, population, total_organisms, food_count,
+avg_energy, avg_age, seeking_count, wandering_count,
+temperature_zones, obstacles
 ```
 
-Tests whether Q-Learning agents outlive random-walking agents and greedy
-food-seekers across repeated trials with fixed seeds. Results are printed
-as a comparison table with a ratio relative to the random baseline.
+Load in Python:
+```python
+import pandas as pd
+df = pd.read_csv("logs/2026-04-09_14-30-00/stats.csv")
+df.plot(x="timestep", y=["population", "avg_energy"])
+```
 
 ## Scientific Basis
 
@@ -92,13 +126,12 @@ The RL implementation follows:
 
 - Electrophysiology uses a simplified continuous model, not full Hodgkin-Huxley
   compartmental dynamics.
-- RL brains train from scratch each episode; no persistent model checkpointing
-  by default.
-- No Gym-compatible environment wrapper yet, so standard RL benchmarking
-  pipelines cannot be applied directly.
-- C++ visualization components (MICROLIFE_ULTIMATE.cpp, ONLY_FOR_NATURE.cpp)
-  require SFML and separate compilation via the provided Makefiles.
+- RL brains train from scratch each episode unless `save_model` / `load_model`
+  is used (see `experiments/train_and_evaluate.py`).
+- No Gym-compatible environment wrapper yet.
+- C++ visualization components require SFML and separate compilation
+  (see the provided Makefiles).
 
 ## License
 
-AGPL-3.0 — see [LICENSE.txt](LICENSE.txt)
+AGPL-3.0 -- see [LICENSE.txt](LICENSE.txt)
