@@ -1,120 +1,104 @@
-# 🦠 Micro-Life ML Project
+# MicroLife: Agent-Based Micro-Organism Simulation
 
-A machine learning-powered simulation of micro-organism behaviors, from simple random movement to complex ecosystem dynamics with reinforcement learning.
+A simulation platform for studying emergent behaviors in artificial micro-organisms.
+Combines agent-based modeling with tabular and deep reinforcement learning.
 
-## 🌟 Overview
+## Implementation Status
 
-This project simulates artificial micro-organisms that:
-- Move and interact in a 2D/3D environment
-- Learn behaviors through machine learning algorithms
-- Evolve and adapt using reinforcement learning
-- Form complex ecosystems with emergent behaviors
+| Component | Status |
+|-----------|--------|
+| Organism: movement, energy, morphology, reproduction | Complete |
+| Environment: food, temperature zones, obstacles | Complete |
+| Greedy food-seeking behavior | Complete |
+| Tabular Q-Learning brain | Complete |
+| DQN / Double-DQN (numpy, no external RL library required) | Complete |
+| Evolutionary and CNN brains | Complete |
+| Neural tissue model: neuron life-cycle, Hebbian plasticity | Complete |
+| Neurovascular coupling simulation | Complete |
+| Multi-species ecosystem | In progress |
+| GPU-accelerated batch rollouts | Experimental |
 
-## 📚 Documentation
+## Quick Start
 
-**→ See [MICROLIFE_ML_GUIDE.md](./MICROLIFE_ML_GUIDE.md) for the complete step-by-step development roadmap**
-
-## 🚀 Quick Start
-
-### Prerequisites
 ```bash
-# Python 3.8 or higher
-python --version
-
-# Create virtual environment
-python -m venv microlife_env
-source microlife_env/bin/activate  # Windows: microlife_env\Scripts\activate
-```
-
-### Installation
-```bash
-# Install dependencies
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-### Run Your First Simulation
-```bash
-# Coming soon - Phase 1
+# Compare RL agents vs random/greedy baselines
+python experiments/benchmark_rl_vs_random.py
+
+# Neuron plasticity demo
+python demo_neuron_learning.py
+
+# Multi-agent AI battle
+python demo_ai_battle.py
+
+# Headless basic simulation
 python -m microlife.simulation.run_basic
 ```
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 microlife/
-├── simulation/     # Core simulation engine
-│   ├── organism.py
-│   ├── environment.py
-│   └── physics.py
-├── ml/            # Machine learning models
-│   ├── clustering.py
-│   ├── prediction.py
-│   └── reinforcement.py
-├── visualization/ # Graphics and animation
-│   ├── renderer.py
-│   └── dashboard.py
-└── data/          # Logged simulation data
-    └── logs/
+├── simulation/
+│   ├── organism.py            # Agent: energy, movement, morphology, reproduction
+│   ├── environment.py         # World: food, temperature zones, obstacles
+│   ├── morphology.py          # Physical trait system with mutation
+│   ├── neuron.py              # Neuron life-cycle (neurogenesis -> apoptosis)
+│   ├── neuron_morphology.py   # Morphological neuron types
+│   ├── neural_environment.py  # Tissue: neurons + blood vessels + astrocytes
+│   └── neuron_learning.py     # Synaptic plasticity (LTP/LTD/STDP)
+├── ml/
+│   ├── brain_base.py          # Abstract Brain interface
+│   ├── brain_rl.py            # Q-Learning, DQN, Double-DQN (numpy)
+│   ├── brain_evolutionary.py  # Genetic algorithm brain
+│   └── brain_cnn.py           # CNN-based perception
+experiments/
+└── benchmark_rl_vs_random.py  # Reproducible survival comparison
 ```
 
-## 🎯 Development Phases
+## Running the Benchmark
 
-1. **Phase 1:** Simple random movement ✅ (Starting here!)
-2. **Phase 2:** Behaviors & data collection
-3. **Phase 3:** Pattern recognition (K-Means, Decision Trees)
-4. **Phase 4:** Behavior prediction (LSTM, Random Forest)
-5. **Phase 5:** Reinforcement learning (Q-Learning, DQN)
-6. **Phase 6:** Advanced visualization
-7. **Phase 7:** Complex multi-species ecosystem
+```bash
+python experiments/benchmark_rl_vs_random.py --trials 10 --steps 2000
+```
 
-## 🧬 Features (Planned)
+Tests whether Q-Learning agents outlive random-walking agents and greedy
+food-seekers across repeated trials with fixed seeds. Results are printed
+as a comparison table with a ratio relative to the random baseline.
 
-- [x] Project setup
-- [ ] Basic organism simulation
-- [ ] Food seeking behavior
-- [ ] Energy & reproduction system
-- [ ] ML behavior clustering
-- [ ] Predictive movement models
-- [ ] Reinforcement learning agents
-- [ ] Interactive visualization
-- [ ] Multi-species ecosystem
+## Scientific Basis
 
-## 🛠️ Technologies
+The neural tissue simulation (`microlife/simulation/neuron.py`) is grounded
+in peer-reviewed neuroscience:
 
-- **Python 3.8+**
-- **NumPy & SciPy** - Scientific computing
-- **Scikit-learn** - Machine learning
-- **TensorFlow/PyTorch** - Deep learning
-- **Matplotlib/Pygame** - Visualization
-- **Pandas** - Data analysis
+- Hebbian learning / LTP / LTD: Bliss & Collingridge (1993); Malenka & Bear (2004)
+- Neuron life-cycle (neurogenesis to apoptosis): Kempermann et al. (2015); Yuan & Yankner (2000)
+- Neurovascular coupling: Attwell et al. (2010); Iadecola (2017)
+- Astrocyte-neuron lactate shuttle: Pellerin & Magistretti (1994)
+- STDP: Markram et al. (1997)
 
-## 📖 Learning Goals
+See [NEURON_BIOLOGY.md](NEURON_BIOLOGY.md) for the complete reference list.
 
-- Understand agent-based modeling
-- Apply various ML algorithms to behavioral data
-- Implement reinforcement learning from scratch
-- Create emergent artificial life systems
+The RL implementation follows:
 
-## 🤝 Contributing
+- Q-Learning: Watkins & Dayan (1992)
+- DQN with experience replay: Mnih et al. (2015)
+- Double DQN: Van Hasselt et al. (2016)
 
-This is a learning project! Feel free to:
-- Experiment with parameters
-- Add new organism behaviors
-- Try different ML algorithms
-- Improve visualizations
+## Known Limitations
 
-## 📄 License
+- Electrophysiology uses a simplified continuous model, not full Hodgkin-Huxley
+  compartmental dynamics.
+- RL brains train from scratch each episode; no persistent model checkpointing
+  by default.
+- No Gym-compatible environment wrapper yet, so standard RL benchmarking
+  pipelines cannot be applied directly.
+- C++ visualization components (MICROLIFE_ULTIMATE.cpp, ONLY_FOR_NATURE.cpp)
+  require SFML and separate compilation via the provided Makefiles.
 
-See LICENSE.txt
+## License
 
-## 🎓 Resources
-
-- [Complete Development Guide](./MICROLIFE_ML_GUIDE.md)
-- Nature of Code by Daniel Shiffman
-- Reinforcement Learning: An Introduction
-
----
-
-**Current Status:** Phase 1 - Project Setup ✅
-
-*Let's create artificial life! 🧬*
+AGPL-3.0 — see [LICENSE.txt](LICENSE.txt)
