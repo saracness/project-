@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: ["master", "claude/**"]
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          pip install numpy scipy pandas scikit-learn matplotlib seaborn
+
+      - name: Lint (syntax errors and undefined names)
+        run: |
+          flake8 microlife/ experiments/ \
+            --count --select=E9,F63,F7,F82 \
+            --show-source --statistics
+
+      - name: Run headless unit tests
+        env:
+          MPLBACKEND: Agg
+        run: |
+          pytest test_neuron_simulation.py \
+                 test_neuron_advanced.py \
+                 test_phase2.py \
+                 test_ai_simple.py \
+                 -v --tb=short
+
+      - name: Benchmark smoke test (2 trials x 200 steps)
+        env:
+          MPLBACKEND: Agg
+        run: |
+          python experiments/benchmark_rl_vs_random.py --trials 2 --steps 200
